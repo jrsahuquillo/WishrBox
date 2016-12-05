@@ -14,5 +14,12 @@ domain = ['gmail.com', 'mail.com', 'hotmail.com', 'yahoo.es']
   date1 = 25.years.ago
   date2 = 30.years.ago
   birthdate = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
-	user = User.create!({ name: name, email: name.gsub(/\s+/, "").downcase+"@"+domain[rand(domain.length)], birthday: birthdate, preferences: "#{name} preferences" })
+	user = User.create!({
+		name: name,
+		email: name.gsub(/\s+/, "").downcase+"@"+domain[rand(domain.length)],
+		password: '12345678',
+		password_confirmation:'12345678',
+		birthday: birthdate,
+		preferences: "#{name} preferences"
+		})
 end
