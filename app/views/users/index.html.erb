@@ -1,6 +1,9 @@
   <h1>Users</h1>
   <ul>
     <% @users.each do |user| %>
-    <li><%= "Name: " + user.name + ": " + " | Mail: " + user.email %></li>
+    <li>
+      <%= "Usuario: " + user.name + ": " + " | email: " + user.email %>
+        <a href ="/users/<%= user.id %>">Ver perfil</a>
+    </li>
     <% end %>
   </ul>

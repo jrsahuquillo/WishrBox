@@ -1,0 +1,30 @@
+<h1>Add a new user</h1>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |error_msg| %>
+      <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  <br></br>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br><br>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday %>
+  <br><br>
+  <%= f.label :preferences %><br>
+  <%= f.text_area :preferences  %>
+  <br><br>
+
+  <%= f.button %>
+  <% end %>
+
+
+
+<a href="/users">Ver usuarios></a>

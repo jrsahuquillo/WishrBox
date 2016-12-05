@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
   root to: 'users#profile'
 
-  
-  get '/users', to: 'users#index'
 
+  # get '/users', to: 'users#index'
+  # get '/users/:id', to: 'users#show'
+  resources :users
 
 
 end

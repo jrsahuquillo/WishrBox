@@ -19,7 +19,7 @@ domain = ['gmail.com', 'mail.com', 'hotmail.com', 'yahoo.es']
 		email: name.gsub(/\s+/, "").downcase+"@"+domain[rand(domain.length)],
 		password: '12345678',
 		password_confirmation:'12345678',
-		birthday: birthdate,
+		birthday: birthdate.strftime("%d-%m-%Y"),
 		preferences: "#{name} preferences"
 		})
 end

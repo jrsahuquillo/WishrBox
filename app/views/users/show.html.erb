@@ -1,0 +1,28 @@
+<h1><%= @user.name %></h1>
+<hr>
+<h2>User ID :<%= @user.id.to_s %></h2>
+  <% if @user.preferences.present? %>
+    <p><%= @user.preferences %></p>
+  <% end %>
+<a href="/users">Back to users page</a>
+<br>
+<a href="/users/<%= @user.id %>/wishes">Añadir deseo></a>
+
+
+<ul>
+  <li>Nombre:
+    <% if @user.name.present? %>
+      <%= @user.name %>
+    <% end %>
+  </li>
+  <li>Cumpleaños:
+    <% if @user.birthday.present? %>
+      <%= @user.birthday.strftime("%d-%m-%Y") %>
+    <% end %>
+  </li>
+  <li>Preferencias:
+    <% if @user.preferences.present? %>
+      <%= @user.preferences %>
+    <% end %>
+  </li>
+</ul>

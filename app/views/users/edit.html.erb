@@ -1,0 +1,18 @@
+<h1>Edit user to <%=@user.name %>, ID: <%=  @user.id  %></h1>
+<hr>
+
+
+<%= form_for [@user] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br><br>
+  <%= f.label :preferences %>
+  <%= f.text_field :preferences %>
+  <br><br>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday %>
+  <br><br>
+  <%= f.button %>
+<% end %>
+<br>
+<a href="/projects/<%= @user.id %>/">Back to user</a>
