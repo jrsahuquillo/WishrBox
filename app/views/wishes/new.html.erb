@@ -1,0 +1,29 @@
+<h1>Add new wish to <%=@user.name %>´s WishrBox</h1>
+<hr>
+
+
+<% if @wish.errors.any? %>
+  <ul>
+    <% @wish.errors.full_messages.each do |error_msg| %>
+      <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@user, @wish] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br><br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br><br>
+  <%= f.label :link %>
+  <%= f.text_field :link %>
+  <br><br>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <br><br>
+  <%= f.button %>
+<% end %>
+<br>
+<a href="/users/<%= @user.id %>/wishes/">Back to wishes</a>
