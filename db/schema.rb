@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205172350) do
+ActiveRecord::Schema.define(version: 20161206082621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20161205172350) do
     t.datetime "updated_at",                          null: false
     t.text     "preferences"
     t.datetime "birthday"
-    t.string   "password_digest"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -33,6 +32,18 @@ ActiveRecord::Schema.define(version: 20161205172350) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "wishes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.string   "image"
+    t.float    "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_wishes_on_user_id", using: :btree
   end
 
 end

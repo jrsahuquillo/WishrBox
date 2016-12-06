@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action:authenticate_user!
 
+  # GET /users
   def index
     @users = User.order(birthday: :asc).limit(15)
   end
 
+  # GET /users/:id
   def show
     @user = User.find_by(id: params[:id])
     unless @user
@@ -12,11 +14,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/new
   def new
     @user = User.new
     render "new"
   end
 
+  # POST /users
   def create
     @user = User.new(
       name: params[:user][:name],
@@ -32,10 +36,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/:id/edit
   def edit
     @user = User.find params[:id]
   end
 
+  # PATCH/PUT /users/:id
   def update
     @user = User.find_by(id: params[:id])
 
