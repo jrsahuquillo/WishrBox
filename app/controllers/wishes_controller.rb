@@ -38,6 +38,20 @@ class WishesController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by(id: params[:user_id])
+    @wish = @user.wishes.find_by(id: params[:id]).destroy
+    redirect_to action: :index, user_id: @user.id
+  end
+
+  def show
+    @user = User.find_by(id: params[:user_id])
+    @wish = Wish.find_by(id: params[:id])
+    unless @wish
+      render 'No products found'
+    end
+  end
+
 private
 
   def wish_params

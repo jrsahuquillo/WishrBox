@@ -1,0 +1,30 @@
+<h1><%= @wish.title %> from <%=@user.name %>´s WishrBox</h1>
+<hr>
+<br>
+<ul>
+  <li>
+    <% if @wish.title.present? %>
+      <b>Deseo:</b> <%= @wish.title %> <br>
+    <% end %>
+  </li>
+  <li>
+    <% if @wish.description.present? %>
+      <b>Descripción:</b> <%= @wish.description %><br>
+    <% end %>
+  </li>
+  <li>
+    <% if @wish.link.present? %>
+      <b>Url:</b> <a href ="<%= @wish.link %>"><%= @wish.link %></a><br>
+    <% end %>
+  </li>
+  <li>
+    <% if @wish.price.present? %>
+      <b>Precio:</b> <%= @wish.price %> €<br>
+    <% end %>
+  </li>
+    <br>
+</ul>
+<%= link_to 'Editar >> ', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %> |
+<%= link_to('Eliminar >>', user_wish_path(@user, @wish),
+      method: :delete, data: { confirm: 'Are you sure to delete?' }) %><br><br>
+<%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %>

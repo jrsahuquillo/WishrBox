@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
 <h1><%= @user.name %> wishes </h1>
 <hr>
 <ul>
@@ -6,12 +10,11 @@
     Title: <%= wish.title %> |
     Description: <%= wish.description %> |
     Url: <a href ="<% wish.link %>"><%= wish.link  %></a> |
-    Price: <%= wish.price %>
-    <%= link_to 'View wish >> ', "/users/#{@user.id}/wishes/#{wish.id}/" %>
-    <%= link_to 'Edit wish >> ', "/users/#{@user.id}/wishes/#{wish.id}/edit" %>
-    <%= link_to('Delete >>', user_wish_path(@user, wish),
-          method: :delete, data: { confirm: 'Are you sure to delete?' }) %>
-      <br><br>
+    Price: <%= wish.price %> €
+    <%= link_to 'Ver deseo >> ', "/users/#{@user.id}/wishes/#{wish.id}/" %>
   </li>
+  <br><br>
   <% end %>
+
+    <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %>
 </ul>
