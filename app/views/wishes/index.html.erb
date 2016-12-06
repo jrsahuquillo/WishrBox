@@ -7,6 +7,11 @@
     Description: <%= wish.description %> |
     Url: <a href ="<% wish.link %>"><%= wish.link  %></a> |
     Price: <%= wish.price %>
+    <%= link_to 'View wish >> ', "/users/#{@user.id}/wishes/#{wish.id}/" %>
+    <%= link_to 'Edit wish >> ', "/users/#{@user.id}/wishes/#{wish.id}/edit" %>
+    <%= link_to('Delete >>', user_wish_path(@user, wish),
+          method: :delete, data: { confirm: 'Are you sure to delete?' }) %>
+      <br><br>
   </li>
   <% end %>
 </ul>

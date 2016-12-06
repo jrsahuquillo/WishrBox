@@ -4,5 +4,6 @@ class Wish < ApplicationRecord
 
   #Validations
   validates :title, presence:true
+  validates_format_of :link, with: URI::regexp(%w(http https))
 
 end
