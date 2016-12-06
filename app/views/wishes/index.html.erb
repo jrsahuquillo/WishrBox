@@ -1,0 +1,12 @@
+<h1><%= @user.name %> wishes </h1>
+<hr>
+<ul>
+<% @wishes.each do |wish| %>
+  <li>
+    Title: <%= wish.title %> |
+    Description: <%= wish.description %> |
+    Url: <a href ="<% wish.link %>"><%= wish.link  %></a> |
+    Price: <%= wish.price %>
+  </li>
+  <% end %>
+</ul>
