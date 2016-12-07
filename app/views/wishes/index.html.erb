@@ -4,6 +4,7 @@
 <ul>
 <% @wishes.each do |wish| %>
   <li>
+    <%= image_tag wish.image.url(:thumb) %>
     Title: <%= wish.title %> |
     Description: <%= wish.description %> |
     Url: <a href ="<% wish.link %>"><%= wish.link  %></a> |

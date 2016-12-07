@@ -2,6 +2,7 @@
 <hr>
 <br>
 <ul>
+  <li><%= image_tag @wish.image.url(:medium)%></li>
   <li>
     <% if @wish.title.present? %>
       <b>Deseo:</b> <%= @wish.title %> <br>
