@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action:authenticate_user!
+
+
 
   # GET /users
   def index
@@ -7,12 +8,12 @@ class UsersController < ApplicationController
   end
 
   # GET /users/:id
-  def show
-    @user = User.find_by(id: params[:id])
-    unless @user
-      render "no_users_found"
-    end
-  end
+  # def show
+  #   @user = User.find_by(id: params[:id])
+  #   unless @user
+  #     render "no_users_found"
+  #   end
+  # end
 
   # GET /users/new
   def new
@@ -22,11 +23,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(
-      name: params[:user][:name],
-      email: params[:user][:email],
-      birthday: params[:user][:birthday],
-      preferences: params[:user][:preferences])
+    @user = User.new(user_params)
 
     if @user.save
       flash[:notice] = "New user added successfully"
@@ -38,7 +35,8 @@ class UsersController < ApplicationController
 
   # GET /users/:id/edit
   def edit
-    @user = User.find params[:id]
+    @user = current_user
+    # @user = User.find params[:id]
   end
 
   # PATCH/PUT /users/:id
@@ -46,7 +44,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.update(user_params)
-      redirect_to action: :index, id: @user.id
+      redirect_to action: :profile, id: @user.id
     else
       render "edit"
     end

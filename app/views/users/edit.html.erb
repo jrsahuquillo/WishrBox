@@ -6,13 +6,14 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br><br>
-  <%= f.label :preferences %>
-  <%= f.text_field :preferences %>
-  <br><br>
   <%= f.label :birthday %>
   <%= f.date_field :birthday %>
   <br><br>
+  <%= f.label :preferences %>
+  <%= f.text_area :preferences %>
+  <br><br>
   <%= f.button %>
+  <%= link_to 'Cancel', profile_path(@user) %>
 <% end %>
 <br>
-<a href="/projects/<%= @user.id %>/">Back to user</a>
+<%= link_to 'My WishrBox', user_wishes_path(@user) %>

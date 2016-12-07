@@ -6,7 +6,7 @@
   <% end %>
 <a href="/users">Back to users page</a>
 <br>
-<a href="/users/<%= @user.id %>/wishes">Añadir deseo></a>
+<a href="/users/<%= @user.id %>/wishes">Mi WishrBox></a>
 
 
 <ul>
@@ -25,4 +25,5 @@
       <%= @user.preferences %>
     <% end %>
   </li>
+  <%= link_to 'Editar >> ', edit_user_path(current_user) %><br>
 </ul>
