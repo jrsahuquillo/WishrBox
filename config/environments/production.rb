@@ -93,7 +93,7 @@ Rails.application.configure do
     s3_region: ENV.fetch('AWS_REGION'),
   },
     s3_host_name: "s3-eu-west-1.amazonaws.com", # Added entry
-    url: ":s3_host_name"                        # Added entry
+    # url: ":s3_host_name"                        # Added entry
 
 }
 end
