@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for [@user, @wish], url: user_wish_path, html: {multipart:true} do |f| %>
+<%= form_for [@user, @wish], html: {multipart:true} do |f| %>
   <%= f.label :image %>
   <%= f.file_field :image %>
   <br><br>
