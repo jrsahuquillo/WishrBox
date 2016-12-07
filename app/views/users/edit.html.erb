@@ -1,8 +1,11 @@
-<h1>Edit user to <%=@user.name %>, ID: <%=  @user.id  %></h1>
+<h1>Edit user to <%=@user.name %></h1>
 <hr>
 
 
-<%= form_for [@user] do |f| %>
+<%= form_for @user, html: {multipart: true} do |f| %>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+  <br><br>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br><br>

@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
 
-
-
   # GET /users
   def index
     @users = User.order(birthday: :asc).limit(15)
   end
 
   # GET /users/:id
-  # def show
-  #   @user = User.find_by(id: params[:id])
-  #   unless @user
-  #     render "no_users_found"
-  #   end
-  # end
+  def show
+    @user = current_user
+    unless @user
+      render "no_users_found"
+    end
+  end
 
   # GET /users/new
   def new
@@ -41,7 +39,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/:id
   def update
-    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
+    @user = current_user
 
     if @user.update(user_params)
       redirect_to action: :profile, id: @user.id
@@ -61,7 +60,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :preferences, :birthday)
+      params.require(:user).permit(:name, :email, :preferences, :birthday, :avatar)
     end
 
 end
