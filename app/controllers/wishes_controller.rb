@@ -3,9 +3,10 @@ class WishesController < ApplicationController
 
 
     def index
+
       if params[:user_id]
         @user = User.find(params[:user_id])
-        if current_user.id == params[:user_id]
+        if current_user.id == params[:user_id].to_i
           @wishes = @user.wishes.order('favorite desc')
         else
           @wishes = @user.wishes.where(public:true).order('favorite desc')
@@ -71,7 +72,7 @@ class WishesController < ApplicationController
         return render text: 'Not Found', status: '404'
       end
 
-      unless @wish.public
+      if !@wish.public && @wish.user_id != current_user.id
         return render text: 'Not public', status: '404'
       end
 
