@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :wishes
-
+  has_many :friendships
 
   #Validations
   validates :name, presence: true

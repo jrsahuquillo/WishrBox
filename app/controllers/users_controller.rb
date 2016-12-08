@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   # GET /users
   def index
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "New user added successfully"
+      WelcomeMailer.welcome_email(@user).deliver.now
       redirect_to "/users/#{@user.id}"
     else
       render "/users/new"
@@ -63,9 +63,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :preferences, :birthday, :avatar)
     end
-
-    # def set_s3_direct_post
-    #   @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
-    # end
 
 end
