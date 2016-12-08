@@ -22,6 +22,15 @@
   <%= f.label :price %>
   <%= f.text_field :price %> €
   <br><br>
+  <%= f.label :public %>
+  <%= f.check_box :public %>
+  <br><br>
+  <%= f.label :locked %>
+  <%= f.check_box :locked %>
+  <br><br>
+  <%= f.label :favorite %>
+  <%= f.check_box :favorite %>
+  <br><br>
   <%= f.button %>
   <%= link_to 'Cancel', user_wishes_path(@user) %>
 <% end %>
