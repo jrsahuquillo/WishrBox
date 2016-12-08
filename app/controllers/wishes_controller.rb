@@ -6,10 +6,11 @@ class WishesController < ApplicationController
       # if params[:user_id]
       #   @user = User.find(params[:user_id])
       # else
-      #   @user = User.find(current_user.id)
+      #   @user = current_user
       # end
       @user = current_user
-      @wishes = @user.wishes
+      @wishes = @user.wishes.order('favorite desc')
+
     end
 
     def new
@@ -42,26 +43,30 @@ class WishesController < ApplicationController
       # @user = User.find_by(id: params[:user_id])
       @wish = @user.wishes.find_by(id: params[:id])
 
-    if @wish.update(wish_params)
-      redirect_to "/users/#{@user.id}/wishes"
-    else
-      render "edit"
+      if @wish.update(wish_params)
+        redirect_to "/users/#{@user.id}/wishes"
+      else
+        render "edit"
+      end
     end
-  end
 
-  def destroy
-    @user = current_user
-    # @user = User.find_by(id: params[:user_id])
-    @wish = @user.wishes.find_by(id: params[:id]).destroy
-    redirect_to action: :index, user_id: @user.id
-  end
+    def destroy
+      @user = current_user
+      # @user = User.find_by(id: params[:user_id])
+      @wish = @user.wishes.find_by(id: params[:id]).destroy
+      redirect_to action: :index, user_id: @user.id
+    end
 
-  def show
-    @user = current_user
-    # @user = User.find_by(id: params[:user_id])
-    @wish = Wish.find_by(id: params[:id])
-    unless @wish
-      render 'No products found'
+    def show
+      # @user = User.find_by(id: params[:user_id])
+      @wish = Wish.find_by(id: params[:id])
+      @user = @wish.user
+      unless @wish
+        render 'No products found'
+      end
+
+    def favorite_wishes
+      wishes.where(favorite: true)
     end
   end
 

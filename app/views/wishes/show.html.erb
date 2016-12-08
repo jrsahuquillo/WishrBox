@@ -37,7 +37,9 @@
   </li>
     <br>
 </ul>
-<%= link_to 'Editar >> ', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %> |
+<% if @user == current_user %>
+  <%= link_to 'Editar >> ', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %> |
+<% end %>
 <%= link_to('Eliminar >>', user_wish_path(@user, @wish),
       method: :delete, data: { confirm: 'Are you sure to delete?' }) %><br><br>
 <%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %>

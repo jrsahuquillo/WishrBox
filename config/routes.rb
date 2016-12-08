@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   # get '/users', to: 'users#index'
   # get '/users/:id', to: 'users#show'
   resources :users do
-    resources :wishes
+      resources :wishes
   end
+
+  resources :wishes, only: :show
 
   match '/signup',    to: 'users#new',    via: 'get'
 
