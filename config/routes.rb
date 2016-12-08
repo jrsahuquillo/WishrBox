@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: 'wishes#index'
 
 
-  # get '/users', to: 'users#index'
+  get '/feed', to: 'wishes#index'
+
   # get '/users/:id', to: 'users#show'
   resources :users do
       resources :wishes

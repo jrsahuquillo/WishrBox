@@ -7,7 +7,15 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
+    @user = User.find_by(id: params[:id])
+    unless @user
+      render "no_users_found"
+    end
+  end
+  # GET /feed/
+  def feed
     @user = current_user
+    # @following = @user.following
     unless @user
       render "no_users_found"
     end
@@ -20,17 +28,18 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      flash[:notice] = "New user added successfully"
-      WelcomeMailer.welcome_email(@user).deliver.now
-      redirect_to "/users/#{@user.id}"
-    else
-      render "/users/new"
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #
+  #   if @user.save
+  #     flash[:notice] = "New user added successfully"
+  #     binding.pry
+  #     WelcomeMailer.welcome_email(@user).deliver.now
+  #     redirect_to "/users/#{@user.id}"
+  #   else
+  #     render "/users/new"
+  #   end
+  # end
 
   # GET /users/:id/edit
   def edit

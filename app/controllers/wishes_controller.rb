@@ -3,13 +3,19 @@ class WishesController < ApplicationController
 
 
     def index
-      # if params[:user_id]
-      #   @user = User.find(params[:user_id])
-      # else
-      #   @user = current_user
-      # end
-      @user = current_user
-      @wishes = @user.wishes.order('favorite desc')
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+        if current_user.id == params[:user_id]
+          @wishes = @user.wishes.order('favorite desc')
+        else
+          @wishes = @user.wishes.where(public:true).order('favorite desc')
+        end
+      else
+        @user = current_user
+        @wishes = @user.wishes.order('favorite desc')
+      end
+      # @user = current_user
+      # @wishes = @user.wishes.order('favorite desc')
 
     end
 
@@ -60,14 +66,24 @@ class WishesController < ApplicationController
     def show
       # @user = User.find_by(id: params[:user_id])
       @wish = Wish.find_by(id: params[:id])
-      @user = @wish.user
+
       unless @wish
-        render 'No products found'
+        return render text: 'Not Found', status: '404'
       end
 
-    def favorite_wishes
-      wishes.where(favorite: true)
-    end
+      unless @wish.public
+        return render text: 'Not public', status: '404'
+      end
+
+      # if !@wish
+      #   render text: 'Not Found', status: '404'
+      # end
+      @user = @wish.user
+
+  end
+
+  def favorite_wishes
+    wishes.where(favorite: true)
   end
 
 private
