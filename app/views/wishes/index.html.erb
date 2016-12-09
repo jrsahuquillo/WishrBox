@@ -21,7 +21,7 @@
 <% unless @user != current_user %>
   <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
 <% end %>
-
+<%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
 <%= link_to 'Ver perfil usuario >> ', profile_path(@user) %><br><br>
 <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
 
@@ -33,5 +33,4 @@
     <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
   <% end %>
 <% end %>
-
 </ul>
