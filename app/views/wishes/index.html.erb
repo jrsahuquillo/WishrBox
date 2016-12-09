@@ -1,5 +1,5 @@
+<h1>WishrBox de <%= @user.name %></h1>
 <%= image_tag @user.avatar.url(:thumb) %>
-<h1><%= @user.name %> wishes </h1>
 <hr>
 <ul>
 <% @wishes.each do |wish| %>
@@ -19,5 +19,6 @@
   <% end %>
 
     <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
-    <%= link_to 'Ver perfil usuario >> ', profile_path(@user) %>
+    <%= link_to 'Ver perfil usuario >> ', profile_path(@user) %><br><br>
+    <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %>
 </ul>

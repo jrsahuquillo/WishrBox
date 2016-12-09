@@ -1,0 +1,7 @@
+<h1>Encuentra los deseos de tus amigos</h1>
+<%= form_tag users_path, method: 'get' do%>
+<br>
+<p>Introduce el email del amigo que buscas</p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", name: nil %>
+<% end %>

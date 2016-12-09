@@ -1,9 +1,9 @@
-  <h1>Users</h1>
+  <h1>Amigo encontrado</h1>
   <ul>
-    <% @users.each do |user| %>
+    <% @user %>
     <li>
-      <%= "Usuario: " + user.name + ": " + " | email: " + user.email %>
-        <a href ="/users/<%= user.id %>">Ver perfil</a>
+      <%= image_tag @user.avatar.url(:thumb) %>
+      <%= "Usuario: " + @user.name + ": " + " | email: " + @user.email %>
+        <%= link_to "Ver los deseos de #{@user.name}", user_wishes_path(@user) %>
     </li>
-    <% end %>
   </ul>

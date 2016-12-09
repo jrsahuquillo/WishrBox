@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(birthday: :asc).limit(15)
+    @user = User.find_by(email: params[:search])
+    unless @user
+      render "no_users_found"
+    end
+    # @users = User.order(birthday: :asc).limit(15)
   end
 
   # GET /users/:id
@@ -65,6 +69,22 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     render 'users/profile'
+  end
+
+
+  def follow_to
+
+    @followed = Following.new
+    @followed.user_id = current_user.id
+    @user = User.find_by(id: params[:id])
+    @followed.follow_id = @user.id
+    if @followed.save
+      flash[:notice] = "Estás siguiendo la WishrBox de #{@user.name}"
+      redirect_to user_wishes_path(@user)
+    else
+      flash[:notice] = "Ha habido algún error al seguir a #{@user.name}"
+      redirect_to user_wishes_path(@user)
+    end
   end
 
   private

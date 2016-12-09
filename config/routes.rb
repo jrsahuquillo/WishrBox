@@ -5,9 +5,14 @@ Rails.application.routes.draw do
 
 
   get '/feed', to: 'wishes#index'
+  get '/search_following', to: 'users#search_following'
+    # post '/follow_to', to: 'users#follow_to', as: 'follow'
+    # match '/follow_to',    to: 'users#follow_to', as: 'follow',   via: 'get'
 
   # get '/users/:id', to: 'users#show'
   resources :users do
+    post '/follow/:id', to: 'users#follow_to', as: :follow
+    resources :followings
       resources :wishes
   end
 
