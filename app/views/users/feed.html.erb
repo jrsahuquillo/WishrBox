@@ -13,6 +13,7 @@
   <ul>
     <li>
 
+<h2>Los deseos de tus amigos</h2>
     <% @followed_user.each do |followed| %>
       <%= link_to image_tag(followed.avatar.url(:thumb)), user_wishes_path(followed) %>
       <%= followed.name %>
