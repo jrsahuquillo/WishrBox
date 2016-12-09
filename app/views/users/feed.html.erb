@@ -1,11 +1,30 @@
   <h1>Users</h1>
   <h2>Los deseos de <%= current_user.name %></h2>
-
-    <ul>
-    <% current_user.each do |user| %>
+  <ul>
+  <% @user %>
+    <%= image_tag current_user.avatar.url(:thumb) %>
     <li>
-      <%= "Usuario: " + user.name + ": " + " | email: " + user.email %>
-        <%= link_to 'Ver perfil', profile_path(@user) %>
+      <% current_user.wishes.each do |wish| %>
+        <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(current_user, wish) %>
+        <%= wish.title %>
+      <% end %>
     </li>
-    <% end %>
+  </ul>
+  <ul>
+    <li>
+
+    <% User.where(id: @followed.pluck(:follow_id)).each do |followed| %>
+      <%= image_tag followed.avatar.url(:thumb) %>
+      <%= followed.name %>
+      <%= link_to 'Ver perfil', profile_path(@user) %>
+      <ul>
+        <li>
+          <% followed.wishes.each do |wish| %>
+            <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(followed, wish) %>
+            <%= wish.title %>
+          <% end %>
+        </li>
+      </ul>
+      <% end %>
+    </li>
   </ul>
