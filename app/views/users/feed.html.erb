@@ -13,7 +13,7 @@
   <ul>
     <li>
 
-    <% User.where(id: @followed.pluck(:follow_id)).each do |followed| %>
+    <% @followed_user.each do |followed| %>
       <%= image_tag followed.avatar.url(:thumb) %>
       <%= followed.name %>
       <%= link_to 'Ver perfil', profile_path(@user) %>

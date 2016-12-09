@@ -18,8 +18,9 @@ class UsersController < ApplicationController
   end
   # GET /feed/
   def feed
-    @followed = Following.where(user_id: current_user.id)
-    
+    @followed = Following.where(user_id: current_user)
+    @followed_user= User.where(id: @followed.pluck(:follow_id))
+
     # @following = @user.following
     # unless @user
     #   render "no_users_found"
