@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get '/users/:id', to: 'users#show'
   resources :users do
     post '/follow/:id', to: 'users#follow_to', as: :follow
+    post '/no_follow/:id', to: 'users#nofollow_to', as: :nofollow
     resources :followings
       resources :wishes
   end

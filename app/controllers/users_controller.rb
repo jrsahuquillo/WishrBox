@@ -73,19 +73,34 @@ class UsersController < ApplicationController
 
 
   def follow_to
-
     @followed = Following.new
     @followed.user_id = current_user.id
     @user = User.find_by(id: params[:id])
     @followed.follow_id = @user.id
-    if @followed.save
-      flash[:notice] = "Estás siguiendo la WishrBox de #{@user.name}"
-      redirect_to user_wishes_path(@user)
-    else
-      flash[:notice] = "Ha habido algún error al seguir a #{@user.name}"
-      redirect_to user_wishes_path(@user)
-    end
+
+      if @followed.save
+        flash[:notice] = "Estás siguiendo la WishrBox de #{@user.name}"
+        redirect_to user_wishes_path(@user)
+      else
+        flash[:notice] = "Ha habido algún error al seguir a #{@user.name}"
+        redirect_to user_wishes_path(@user)
+      end
+
   end
+
+  def nofollow_to
+      @user = User.find_by(id: params[:id])
+      @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id)
+      if @followed.destroy
+        flash[:notice] = "Ya no sigues a #{@user.name}"
+        redirect_to user_wishes_path(@user)
+      else
+        flash[:notice] = "Ha habido algún error al dejar de seguir a #{@user.name}"
+        redirect_to user_wishes_path(@user)
+      end
+  end
+
+
 
   private
 

@@ -18,7 +18,15 @@
   <br><br>
   <% end %>
 
-    <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
-    <%= link_to 'Ver perfil usuario >> ', profile_path(@user) %><br><br>
-    <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %>
+<% unless @user != current_user %>
+  <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
+<% end %>
+  <%= link_to 'Ver perfil usuario >> ', profile_path(@user) %><br><br>
+  <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
+  <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
+  <% unless @followed == nil %>
+    <%= link_to "Dejar de seguir a #{@user.name}>> ", user_nofollow_path(current_user, @user), method: :post %>
+  <% else %>
+    <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
+  <% end %>
 </ul>
