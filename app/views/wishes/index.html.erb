@@ -1,6 +1,7 @@
 <h1>WishrBox de <%= @user.name %></h1>
 <%= image_tag @user.avatar.url(:thumb) %>
 <hr>
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
 <ul>
 <% @wishes.each do |wish| %>
   <li>
@@ -17,13 +18,21 @@
   </li>
   <br><br>
   <% end %>
-
+</ul>
 <% unless @user != current_user %>
   <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
 <% end %>
 <%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
-<%= link_to 'Ver perfil usuario >> ', profile_path(@user) %><br><br>
+
+<% unless @user != current_user %>
+  <%= link_to "Ver tu perfil  >> ", profile_path(current_user) %>
+  <% else %>
+  <%= link_to "Ver perfil de #{@user.name}  >> ", user_path(@user) %>
+<% end %><br><br>
+
 <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
+
+<%= link_to 'Inicio >> ', root_path(@user) %><br><br>
 
 <% unless @user == current_user %>
 <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
@@ -33,4 +42,3 @@
     <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
   <% end %>
 <% end %>
-</ul>

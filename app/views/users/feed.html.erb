@@ -1,26 +1,27 @@
-  <h1>Users</h1>
-  <h2>Los deseos de <%= current_user.name %></h2>
+  <h1>WishrBox</h1>
+  <hr>
+
   <ul>
-  <% @user %>
-    <%= image_tag current_user.avatar.url(:thumb) %>
-    <li>
-      <% current_user.wishes.each do |wish| %>
-        <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(current_user, wish) %>
-        <%= wish.title %>
-      <% end %>
-    </li>
+    <h2>Tus deseos</h2>
+      <%= link_to image_tag(current_user.avatar.url(:thumb)), user_wishes_path(current_user)%>
+      <li>
+        <% current_user.wishes.each do |wish| %>
+          <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(current_user, wish) %>
+          <%= wish.title %>
+        <% end %>
+      </li>
   </ul>
   <ul>
     <li>
 
-<h2>Los deseos de tus amigos</h2>
+<h2>Los deseos favoritos de tus amigos</h2>
     <% @followed_user.each do |followed| %>
       <%= link_to image_tag(followed.avatar.url(:thumb)), user_wishes_path(followed) %>
       <%= followed.name %>
-      <%= link_to 'Ver perfil', profile_path(@user) %>
+      <%= link_to 'Ver perfil', user_path(followed) %>
       <ul>
         <li>
-          <% followed.wishes.each do |wish| %>
+          <% followed.wishes.where(favorite: true).each do |wish| %>
             <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(followed, wish) %>
             <%= wish.title %>
           <% end %>
@@ -29,3 +30,5 @@
       <% end %>
     </li>
   </ul>
+  <br><br>
+  <%= link_to "Buscar amigo>> ", search_following_path %>

@@ -25,12 +25,17 @@ class User < ApplicationRecord
    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
  def self.search(search)
-   @search = search
-   if search
-     find(:all, conditions: ['mail LIKE ?', "%#{search}%"])
-   else
-     find(:all)
-   end
- end
 
+   if search
+     User.where('name = :query OR email = :query', query: search)
+   else
+      find(:all)
+   end
+
+  #  if search
+  #    find(:all, conditions: ['mail || name LIKE ?', "%#{search}%"])
+  #  else
+  #    find(:all)
+  #  end
+ end
 end

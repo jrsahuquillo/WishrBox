@@ -1,5 +1,6 @@
 <h1><%= @wish.title %> from <%=@user.name %>´s WishrBox</h1>
 <hr>
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
 <br>
 <ul>
   <li><%= image_tag @wish.image.url(:medium)%></li>
@@ -42,4 +43,4 @@
 <%= link_to('Eliminar >>', user_wish_path(@user, @wish),
       method: :delete, data: { confirm: 'Are you sure to delete?' }) %>
       <% end %><br><br>
-<%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %>
+<%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %><br><br>

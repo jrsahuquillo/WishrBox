@@ -1,15 +1,7 @@
-<p>Página users/show, dirigir a profile</p>
-<!-- <h1><%= @user.name %></h1>
+<h1><%= @user.name %></h1>
 <hr>
-<h2>User ID :<%= @user.id.to_s %></h2>
-  <% if @user.preferences.present? %>
-    <p><%= @user.preferences %></p>
-  <% end %>
-<a href="/users">Back to users page</a>
-<br>
-<a href="/users/<%= @user.id %>/wishes">Mi WishrBox></a>
-
-
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %><br>
+<%= image_tag @user.avatar.url(:thumb) %>
 <ul>
   <li>Nombre:
     <% if @user.name.present? %>
@@ -26,5 +18,9 @@
       <%= @user.preferences %>
     <% end %>
   </li>
-  <%= link_to 'Editar >> ', edit_user_path(current_user) %><br>
-</ul> -->
+</ul>
+<%= link_to "Deseos de #{@user.name}>> ", user_wishes_path(@user) %>
+<br>
+<%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %>
+<br>
+<%= link_to 'Inicio >> ', root_path(@user) %>

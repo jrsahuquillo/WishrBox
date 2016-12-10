@@ -1,9 +1,11 @@
   <h1>Amigo encontrado</h1>
+  <hr>
+  <%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
   <ul>
     <% @user %>
     <li>
       <%= image_tag @user.avatar.url(:thumb) %>
-      <%= "Usuario: " + @user.name + ": " + " | email: " + @user.email %>
+      <%= "Usuario: " + @user.name + " | email: " + @user.email %><br><br>
         <%= link_to "Ver los deseos de #{@user.name}", user_wishes_path(@user) %>
     </li>
   </ul>

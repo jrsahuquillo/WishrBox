@@ -1,7 +1,9 @@
 <h1>Buscador de amigos</h1>
+<hr>
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
 <%= form_for @user do |f| %>
 <br></br>
-<%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.label :mail %>
+<%= f.text_field :mail %>
 <%= f.button %>
 <% end %>

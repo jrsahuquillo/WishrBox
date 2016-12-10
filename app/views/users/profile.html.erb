@@ -1,5 +1,7 @@
 <h2>Hello <%= current_user.name %>!</h2>
-<%= image_tag @user.avatar.url(:thumb) %>
+<hr>
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %><br>
+<%= image_tag current_user.avatar.url(:thumb) %>
 <p>
 <strong>Email:</strong> <%= current_user.email %>
 </p>

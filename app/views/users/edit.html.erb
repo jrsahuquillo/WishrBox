@@ -1,7 +1,6 @@
 <h1>Edit user to <%=@user.name %></h1>
 <hr>
-
-
+<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
 <%= form_for @user, html: {multipart: true} do |f| %>
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>

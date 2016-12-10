@@ -84,7 +84,7 @@ class WishesController < ApplicationController
   end
 
   def favorite_wishes
-    wishes.where(favorite: true)
+    @favorite_wishes = wishes.where(favorite: true)
   end
 
 private
