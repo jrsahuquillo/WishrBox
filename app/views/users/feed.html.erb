@@ -27,14 +27,20 @@
   </section>
 
 <!-- Friends favorite wishes -->
+
   <% @followed_user.each do |followed| %>
   <div>
-  <div class = "home-friends-feed-head">
-    <div class="friends-avatar">
+  <div class="home-friends-feed-head">
+    <div class="flex-vertical-center friends-avatar">
       <%= link_to image_tag(followed.avatar.url(:thumb), class: "circle"), user_wishes_path(followed) %>
+    <h2 class="h5 no-margin"><b><%= followed.name %></b></h2>
     </div>
-    <%= followed.name %>
-    <%= link_to 'Ver perfil >', user_path(followed) %>
+    <div class="flex-vertical-center show-profile">
+    <%= link_to user_path(followed), class:"flex-vertical-center" do %>
+      Ver perfil
+      <i class="material-icons">keyboard_arrow_right</i>
+      <% end %>
+    </div>
   </div>
 
   <section class="row">

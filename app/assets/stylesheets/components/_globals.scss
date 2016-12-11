@@ -51,17 +51,22 @@ nav .brand-logo {
   align-items: center;
 }
 
-.home-self-feed-head {
+.home-self-feed-head, .home-friends-feed-head {
 
   display: flex;
   justify-content: space-between;
 
-  .self-avatar {
+  .self-avatar, .friends-avatar {
     height: $header-height;
     padding: 8px;
+
+    .h5 {
+      padding: 8px;
+    }
+
   }
 
-  .see-all {
+  .see-all, .show-profile {
     height: $header-height;
     a {
       color: rgba(0,0,0,0.54);
