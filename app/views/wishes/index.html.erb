@@ -1,5 +1,5 @@
 <h1>WishrBox de <%= @user.name %></h1>
-<%= image_tag @user.avatar.url(:thumb) %>
+<%= image_tag @user.avatar.url(:thumb), class: "circle" %>
 <hr>
 <%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
 <ul>
@@ -20,7 +20,11 @@
   <% end %>
 </ul>
 <% unless @user != current_user %>
-  <%= link_to 'Añadir deseo >> ', new_user_wish_path(@user, @wish) %><br><br>
+  <a>
+    <%= link_to new_user_wish_path(@user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
+    <i class="material-icons">add</i>
+    <% end %>
+  </a>
 <% end %>
 <%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
 

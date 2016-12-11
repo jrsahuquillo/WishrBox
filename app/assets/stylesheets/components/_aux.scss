@@ -1,0 +1,13 @@
+@import "../settings";
+
+// Paddings
+
+.padding{
+  &.-xs{
+    padding: $xs-measure;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}

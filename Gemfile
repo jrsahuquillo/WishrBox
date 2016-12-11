@@ -48,6 +48,7 @@ group :development do
   gem 'rb-readline'
   gem 'pry-rails'
   gem 'rails_12factor', group: :production
+  gem 'materialize-sass'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

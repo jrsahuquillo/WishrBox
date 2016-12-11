@@ -1,0 +1,27 @@
+@import "../settings";
+
+
+// Wishes feed
+.row {
+
+  .tabs {
+      height: 250px;
+      display: flex;
+
+    li {
+     display: inline-block;
+    }
+
+    .indicator {
+      display: none;
+    }
+
+  }
+}
+
+
+// Avatars
+.circle {
+  height: 35px;
+  width: 35px;
+}

@@ -1,0 +1,75 @@
+@import "../settings";
+
+html {
+  font-size: $font-base;
+}
+
+li {
+  list-style-type: none;
+}
+
+nav .brand-logo {
+  font-size: 2rem;
+}
+
+.input-field {
+  #search {
+    display: -webkit-inline-box;
+  }
+}
+.wish-row{
+  overflow:scroll;
+  display:flex;
+}
+
+.wish-card{
+  width:200px;
+  display:inline;
+  float: left;
+  &:hover{
+    opacity:$opacity-hover;
+  }
+  .wish-img {
+    border-radius: 2.5px;
+    height: 190px;
+    width: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+    img{
+      height: 100%;
+    }
+  }
+  a{
+    color: rgba(0, 0, 0, 0.87);
+}
+}
+
+.flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.home-self-feed-head {
+
+  display: flex;
+  justify-content: space-between;
+
+  .self-avatar {
+    height: $header-height;
+    padding: 8px;
+  }
+
+  .see-all {
+    height: $header-height;
+    a {
+      color: rgba(0,0,0,0.54);
+    }
+  }
+
+}
+
+.content{
+  padding:$sm-measure;
+}

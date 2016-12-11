@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+// Variable definitions
+@import "materialize/components/color";
+@import "settings";
+@import "materialize";
+
+//Components
+@import "components/globals";
+@import "components/aux";
+@import "components/pictures";
+@import "components/cards";
+@import "components/texts"
