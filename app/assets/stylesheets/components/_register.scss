@@ -1,0 +1,41 @@
+@import "../settings";
+
+.sign-up {
+  background-color: #53d1ff;
+  background-size: auto 100%;
+  height: 100%;
+  color: white;
+  
+
+  #new_user > div > a{
+    font-size: 24px;
+    padding-left: 16px;
+  }
+}
+.logo img{
+  display: flex;
+  margin: 0 auto;
+}
+
+.field {
+  padding:10px;
+}
+.sign-up .field label {
+    color: white;
+    font-size: 36px;
+}
+
+
+
+  input[type],
+  input[type]:focus:not([readonly]),
+  textarea.materialize-textarea, {
+    border-bottom: 1px solid #fff;
+    font-size: 20px;
+
+
+  }
+  ::-webkit-input-placeholder {
+     color: white;
+     font-size: 32px;
+  }

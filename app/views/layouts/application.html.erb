@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">WishrBox</a>
@@ -92,10 +93,14 @@
         <% end %>
       </div>
     </nav>
+    <% end %>
 
+    <% if notice %>
     <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
     <p class="alert"><%= alert %></p>
-
+    <% end %>
 
     <%= yield %>
   </body>
