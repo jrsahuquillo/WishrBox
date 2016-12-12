@@ -13,48 +13,55 @@
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">WishrBox</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><%= link_to 'Inicio', root_path(@user) %></li>
-          <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
-          <li><a href="#">Deseos Bloqueados</a></li>
-          <li><%= link_to "Mi perfil", profile_path(current_user) %></li>
-          <li><a href="mobile.html">Invita a tus amigos</a></li>
-          <li>
-              <% if user_signed_in? %>
-                <%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
-              <% else %>
-                <p>
-                  <%= link_to 'Sign_up', new_user_registration_path %> |
-                  <%= link_to 'Sign_in', new_user_session_path %>
-                </p>
-              <% end %>
-          </li>
-          <li>
-            <form>
-              <div class="input-field">
-                <input id="search" type="search" required placeholder="Buscar amigos">
-                <label for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-              </div>
-            </form>
-          </li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          <li><%= link_to 'Inicio', root_path(@user) %></li>
-          <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
-          <li><a href="collapsible.html">Deseos Bloqueados</a></li>
-          <li><a href="mobile.html">Mi perfil</a></li>
-          <li><a href="mobile.html">Invita a tus amigos</a></li>
-          <li><% if user_signed_in? %>
-            <p><%= current_user.name + ": " %><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
-          <% else %>
-            <p>
-              <%= link_to 'Sign_up', new_user_registration_path %> |
-              <%= link_to 'Sign_in', new_user_session_path %>
-            </p>
-          <% end %>
-          </li>
-        </ul>
+        <% if user_signed_in? %>
+          <ul class="right hide-on-med-and-down">
+            <li><%= link_to 'Inicio', root_path(@user) %></li>
+            <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
+            <li><a href="#">Deseos Bloqueados</a></li>
+            <li><%= link_to "Mi perfil", profile_path(current_user) %></li>
+            <li><a href="mobile.html">Invita a tus amigos</a></li>
+            <li>
+                <% if user_signed_in? %>
+                  <%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
+                <% else %>
+                  <p>
+                    <%= link_to 'Sign_up', new_user_registration_path %> |
+                    <%= link_to 'Sign_in', new_user_session_path %>
+                  </p>
+                <% end %>
+            </li>
+            <li>
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required placeholder="Buscar amigos">
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </li>
+          </ul>
+
+        <% end %>
+
+        <% if user_signed_in? %>
+          <ul class="side-nav" id="mobile-demo">
+            <li><%= link_to 'Inicio', root_path(@user) %></li>
+            <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
+            <li><a href="collapsible.html">Deseos Bloqueados</a></li>
+            <li><a href="mobile.html">Mi perfil</a></li>
+            <li><a href="mobile.html">Invita a tus amigos</a></li>
+            <li><% if user_signed_in? %>
+              <p><%= current_user.name + ": " %><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
+            <% else %>
+              <p>
+                <%= link_to 'Sign_up', new_user_registration_path %> |
+                <%= link_to 'Sign_in', new_user_session_path %>
+              </p>
+            <% end %>
+            </li>
+          </ul>
+        
+        <% end %>
       </div>
     </nav>
 
