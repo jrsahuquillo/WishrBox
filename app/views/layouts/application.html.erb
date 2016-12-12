@@ -45,23 +45,46 @@
               </form>
             </li>
           </ul>
-
         <% end %>
+
+
 
         <% if user_signed_in? %>
           <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'Inicio', root_path(@user) %></li>
-            <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
-            <li><a href="collapsible.html">Deseos Bloqueados</a></li>
-            <li><a href="mobile.html">Mi perfil</a></li>
-            <li><a href="mobile.html">Invita a tus amigos</a></li>
+            <div class="side-nav-head">
+                <%= image_tag current_user.avatar.url(:thumb), class: "avatar-med" %>
+                <h5><b><%= current_user.name %></b><br></h5>
+                <h5 class="font-small"><%= current_user.email %></h5>
+            </div>
+
+            <li><%= link_to root_path(@user) do %>
+              <i class="material-icons">home</i>
+              Inicio
+              <% end %>
+            </li>
+            <li><%= link_to user_wishes_path(current_user) do%>
+              <i class="material-icons">photo_filter</i>
+              Mi Wishrbox
+              <% end %>
+            </li>
+            <li><a href="#"><i class="material-icons">lock</i>Deseos Bloqueados</a></li>
+            <li><%= link_to profile_path(current_user) do%>
+              <i class="material-icons">face</i>
+              Mi perfil
+              <% end %>
+            </li>
+
+            <li><a href="#"><i class="material-icons">send</i>Invita a tus amigos</a></li>
             <li><% if user_signed_in? %>
-              <p><%= current_user.name + ": " %><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
+              <%= link_to destroy_user_session_path, method: 'DELETE' do %>
+                <i class="material-icons">power_settings_new</i>
+                Log out
+              <% end %>
             <% else %>
-              <p>
+
                 <%= link_to 'Sign_up', new_user_registration_path %> |
                 <%= link_to 'Sign_in', new_user_session_path %>
-              </p>
+
             <% end %>
             </li>
           </ul>
@@ -72,17 +95,7 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <!-- <div id="top_bar">
-    <% if user_signed_in? %>
-      <p><%= current_user.name + ": " %><%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
-    <% else %>
-      <p>
-        <%= link_to 'Sign_up', new_user_registration_path %> |
-        <%= link_to 'Sign_in', new_user_session_path %>
-      </p>
-    <% end %>
 
-  </div> -->
 
     <%= yield %>
   </body>
