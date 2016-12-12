@@ -74,15 +74,14 @@ nav .brand-logo {
       color: rgba(0,0,0,0.54);
     }
   }
-
 }
 
-.btn-floating {
+.btn-floating.btn-large {
   position: fixed;
   bottom: 16px;
   right: 16px;
   }
 
-.content{
+.content {
   padding:$sm-measure;
 }
