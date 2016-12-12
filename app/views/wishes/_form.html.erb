@@ -29,9 +29,13 @@
   <%= f.label :locked %>
   <%= f.check_box :locked %>
   <br><br>
+  <div class="filled-in" id="filled-in-box" checked="checked">
   <%= f.label :favorite %>
   <%= f.check_box :favorite %>
+  </div>
   <br><br>
-  <%= f.button %>
-  <%= link_to 'Cancel', user_wishes_path(@user) %>
+
+  <%= f.submit class:"waves-effect waves-light btn btn-success" %>
+
+  <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-light btn" %>
 <% end %>

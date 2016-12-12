@@ -18,12 +18,12 @@ nav .brand-logo {
     display: -webkit-inline-box;
   }
 }
-.wish-row{
+.wish-row {
   overflow:scroll;
   display:flex;
 }
 
-.wish-card{
+.wish-card {
   width:200px;
   display:inline;
   float: left;
@@ -38,13 +38,14 @@ nav .brand-logo {
     display: flex;
     justify-content: center;
 
-    img{
+    img {
       height: 100%;
     }
   }
-  a{
+
+  a {
     color: rgba(0, 0, 0, 0.87);
-}
+  }
 }
 
 .flex-vertical-center {
