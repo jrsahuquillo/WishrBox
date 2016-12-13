@@ -1,46 +1,51 @@
-<h1><%= @wish.title %> from <%=@user.name %>´s WishrBox</h1>
-<hr>
-<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
-<br>
-<ul>
-  <li><%= image_tag @wish.image.url(:medium)%></li>
-  <li>
+<div class="content">
+  <div class="row center-align wish-detail">
+    <div class="user-wish-img valign-wrapper">
+      <%= image_tag @wish.image.url(:medium), class: "valign center-align"%>
+      <div class="user-wish-favorite">
+        <% if @wish.favorite? %>
+          <h3>&#11088</h3>
+        <% end %>
+      </div>
+      <div class="user-wish-locked">
+        <% if @user == current_user %>
+          <% if @wish.locked? %>
+            <h3>&#128274</h3>
+          <% else %>
+            <h3>&#128275</h3>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <% if @wish.title.present? %>
-      <b>Deseo:</b> <%= @wish.title %> <br>
+      <h2 class="h4"><b><%= @wish.title %></h2></b>
     <% end %>
-  </li>
-  <li>
-    <% if @wish.description.present? %>
-      <b>Descripción:</b> <%= @wish.description %><br>
-    <% end %>
-  </li>
-  <li>
+  <div class="user-wish-link">
     <% if @wish.link.present? %>
-      <b>Url:</b> <a href ="<%= @wish.link %>"><%= @wish.link %></a><br>
+    <a href="<%= @wish.link %>" target="blank"><i class="material-icons md-36">link</i></a><br>
     <% end %>
-  </li>
-  <li>
+  </div>
+  <div class="user-wish-description">
+    <% if @wish.description.present? %>
+      <h3 class="h5"><%= @wish.description %></h3>
+    <% end %>
+  </div>
+
+  <div class="user-wish-price">
     <% if @wish.price.present? %>
-      <b>Precio:</b> <%= @wish.price %> €<br>
+      <h3 class="h5"><%= @wish.price %> €</h3>
     <% end %>
-  </li>
-  <li>
-    <% if @wish.favorite? %>
-      &#11088<br>
-    <% end %>
-  </li>
-  <li>
-    <% if @wish.locked? %>
-      &#128274<br>
-    <% else %>
-      &#128275
-    <% end %>
-  </li>
-    <br>
-</ul>
+  </div>
+
+
+
+
 <% if @user == current_user %>
-  <%= link_to 'Editar >> ', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %> |
+  <button class="waves-effect waves-light btn"><%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %></button>
 <%= link_to('Eliminar >>', user_wish_path(@user, @wish),
       method: :delete, data: { confirm: 'Are you sure to delete?' }) %>
       <% end %><br><br>
-<%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %><br><br>
+    </div>
+  </div>
+</div>

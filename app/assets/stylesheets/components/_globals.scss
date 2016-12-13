@@ -102,6 +102,67 @@ nav .brand-logo {
 //     color: rgba(0, 0, 0, 0.87);
 //   }
 // }
+.wish-detail {
+  padding-top:16px;
+
+  button a {
+    color: white;
+  }
+
+}
+.user-wish-img {
+  height: 340px;
+  width: 340px;
+  margin: 0 auto;
+  // box-shadow: 1px 1px 2px 1px #ccc;
+
+  img {
+  margin: 0 auto;
+  border-radius: 2.5px;
+  height: auto;
+  width:auto;
+  max-width: 100%;  }
+  position: relative;
+}
+
+.user-wish-favorite {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.user-wish-locked {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+}
+
+.user-wish-link > a {
+  color: #3f51b5;
+}
+
+.material-icons.md-36{
+    font-size: 36px;
+  }
+.user-wish-description {
+  margin: 0 auto;
+  width: 70%;
+  min-width: 350px;
+  text-align: justify;
+  white-space: normal;
+  h3{
+    line-height: 140%;
+  }
+}
+.user-wish-price {
+  margin: 0 auto;
+  width: 70%;
+  min-width: 350px;
+  text-align: left;
+  white-space: normal;
+  color: rgba(0, 0, 0, 0.54);
+  }
+
 
 
 .flex-vertical-center {

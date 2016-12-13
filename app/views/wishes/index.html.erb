@@ -1,6 +1,6 @@
 
 <div class="content">
-  <%= image_tag @user.avatar.url(:thumb), class: "avatar-lg" %>
+  <%= link_to image_tag(@user.avatar.url(:thumb), class: "avatar-lg"), profile_path(current_user) %>
   <div class = "home-self-feed-head">
     <div class = "flex-vertical-center">
       <h2 class="h5"><b><%= @user.name %></b></h2>

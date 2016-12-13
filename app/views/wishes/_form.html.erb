@@ -1,4 +1,4 @@
-
+<div class="content">
 <% if @wish.errors.any? %>
   <ul>
     <% @wish.errors.full_messages.each do |error_msg| %>
@@ -39,3 +39,4 @@
 
   <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-light btn" %>
 <% end %>
+</div>
