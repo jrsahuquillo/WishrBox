@@ -1,5 +1,18 @@
 @import "../settings";
 
+p.notice, p.alert {
+  background-color: transparent;
+  position: absolute;
+  top: 70px;
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0;
+  font-size: 16px;
+  padding-left: 32px;
+  width: 25%;
+
+
+}
+
 .sign-up {
   background-color: #53d1ff;
   background-size: auto 100%;
@@ -7,14 +20,17 @@
   color: white;
 
 
-  #new_user > div > a{
-    font-size: 24px;
-    padding-left: 16px;
+
+  .fields {
+    margin: 0 auto;
+    max-width: 350px;
   }
 }
+
 .logo img{
   display: flex;
   margin: 0 auto;
+  padding: 0px 0px 20px 0px;
 }
 
 .field {
@@ -23,19 +39,38 @@
 .sign-up .field label {
     color: white;
     font-size: 36px;
+
+    &.remember-me {
+      font-size: 18px;
+    }
 }
-
-
 
   input[type],
   input[type]:focus:not([readonly]),
   textarea.materialize-textarea, {
     border-bottom: 1px solid #fff;
     font-size: 20px;
-
+    height: 35px;
 
   }
   ::-webkit-input-placeholder {
      color: white;
      font-size: 32px;
   }
+
+  .btn.white {
+    color: #3f51b5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+  }
+
+.sign-up-link,
+.forgot-password-link,
+.log-in-link {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}

@@ -3,7 +3,7 @@
     <img src="/images/logo/logo.png">
   </div>
 
-  <div class="row">
+  <div class="fields">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
   <div class="col s12">
@@ -30,10 +30,10 @@
       <%= f.password_field :password_confirmation, placeholder: "Confirma contraseña", autocomplete: "off" %>
     </div>
 
-    <div class="actions waves-effect waves-light btn">
+    <div class="actions waves-effect waves-light btn white">
       <%= f.submit "Regístrate" %>
     </div>
-  <% end %>
+  <% end %><br>
 
   <%= render "devise/shared/links" %>
     </div>
