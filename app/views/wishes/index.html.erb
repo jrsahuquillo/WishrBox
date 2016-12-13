@@ -1,52 +1,63 @@
 
 <div class="content">
+  <%= image_tag @user.avatar.url(:thumb), class: "avatar-lg" %>
+  <div class = "home-self-feed-head">
+    <div class = "flex-vertical-center">
+      <h2 class="h5"><b><%= @user.name %></b></h2>
+    </div>
+    <div class="flex-vertical-center">
+      <h2 class="h4 flex-vertical-center"><%= @user.wishes.length %> deseos</h2>
+    </div>
+  </div>
 
-<%= image_tag @user.avatar.url(:thumb), class: "avatar-lg" %>
-<h5><b><%= @user.name %></b></h5>
-<h4><%= @user.wishes.length %> deseos</h4>
-<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %>
-<ul>
-<% @wishes.each do |wish| %>
-  <li>
-    <%= link_to image_tag(wish.image.url(:thumb)), user_wish_path(@user, wish) %>
-    <%= wish.title %>
-    <% if wish.favorite? %>
-      &#11088
-    <% end %>
-    <% if wish.locked? %>
-      &#128274
+  <section class="wrapper">
+  <div class="masonry">
+    <% @wishes.each do |wish| %>
+      <article class="item">
+        <div class="wish-img-user">
+        <%= link_to image_tag(wish.image.url(:medium)), user_wish_path(@user, wish) %>
+      </div>
+        <h3 class="h5"><%= wish.title %></h3>
+        <% if wish.favorite? %>
+          &#11088
+        <% end %>
+        <% if wish.locked? %>
+          &#128274
+        <% else %>
+            &#128275
+        <% end %>
+      </li>
+    </article>
+      <% end %>
+  </div>
+  </section>
+
+
+  <% unless @user != current_user %>
+    <a>
+      <%= link_to new_user_wish_path(@user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
+      <i class="material-icons">add</i>
+      <% end %>
+    </a>
+  <% end %>
+  <%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
+
+  <% unless @user != current_user %>
+    <%= link_to "Ver tu perfil  >> ", profile_path(current_user) %>
     <% else %>
-        &#128275
+    <%= link_to "Ver perfil de #{@user.name}  >> ", user_path(@user) %>
+  <% end %><br><br>
+
+  <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
+
+  <%= link_to 'Inicio >> ', root_path(@user) %><br><br>
+
+  <% unless @user == current_user %>
+  <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
+    <% unless @followed == nil %>
+      <%= link_to "Dejar de seguir a #{@user.name}>> ", user_nofollow_path(current_user, @user), method: :post %>
+    <% else %>
+      <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
     <% end %>
-  </li>
-  <br><br>
   <% end %>
-</ul>
-<% unless @user != current_user %>
-  <a>
-    <%= link_to new_user_wish_path(@user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
-    <i class="material-icons">add</i>
-    <% end %>
-  </a>
-<% end %>
-<%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
-
-<% unless @user != current_user %>
-  <%= link_to "Ver tu perfil  >> ", profile_path(current_user) %>
-  <% else %>
-  <%= link_to "Ver perfil de #{@user.name}  >> ", user_path(@user) %>
-<% end %><br><br>
-
-<%= link_to "Buscar amigo>> ", search_following_path %><br><br>
-
-<%= link_to 'Inicio >> ', root_path(@user) %><br><br>
-
-<% unless @user == current_user %>
-<% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
-  <% unless @followed == nil %>
-    <%= link_to "Dejar de seguir a #{@user.name}>> ", user_nofollow_path(current_user, @user), method: :post %>
-  <% else %>
-    <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
-  <% end %>
-<% end %>
 </div>

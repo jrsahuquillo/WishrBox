@@ -40,9 +40,11 @@ nav .brand-logo {
   width:200px;
   display:inline;
   float: left;
+  border-radius: 2.5px;
   &:hover{
     opacity:$opacity-hover;
   }
+
   .wish-img {
     height: 190px;
     width: 150px;
@@ -55,7 +57,6 @@ nav .brand-logo {
       height: auto;
       max-width: 100%;
 
-
     }
   }
 
@@ -63,6 +64,45 @@ nav .brand-logo {
     color: rgba(0, 0, 0, 0.87);
   }
 }
+
+// .wish-grid {
+//   margin-top: 20px;
+//   display: grid;
+//   align-content: flex-end;
+//   position: relative;
+//   height: 300px;
+// }
+//
+// .wish-card-user {
+//   margin: 0px;
+//   width:165px;
+//   display:inline;
+//   float: left;
+//   border-radius: 2.5px;
+//   &:hover{
+//     opacity:$opacity-hover;
+//   }
+//
+//   .wish-img-user {
+//     height: 200px;
+//     width: 165px;
+//     overflow: hidden;
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-end;
+//     a img  {
+//       border-radius: 2.5px;
+//       height: auto;
+//       width: 165px;
+//
+//     }
+//   }
+//
+//   a {
+//     color: rgba(0, 0, 0, 0.87);
+//   }
+// }
+
 
 .flex-vertical-center {
   display: flex;
