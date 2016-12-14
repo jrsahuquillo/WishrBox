@@ -42,9 +42,7 @@
 
 
 <% if @user == current_user %>
-  <button class="waves-effect waves-light btn"><%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %></button>
-<%= link_to('Eliminar >>', user_wish_path(@user, @wish),
-      method: :delete, data: { confirm: 'Are you sure to delete?' }) %>
+  <button class="waves-effect waves-light btn edit"><%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %></button>
       <% end %><br><br>
     </div>
   </div>

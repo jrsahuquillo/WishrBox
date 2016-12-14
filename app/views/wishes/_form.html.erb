@@ -1,4 +1,4 @@
-<div class="content">
+<div class="create-edit-wish">
 <% if @wish.errors.any? %>
   <ul>
     <% @wish.errors.full_messages.each do |error_msg| %>
@@ -7,13 +7,19 @@
   </ul>
 <% end %>
 
+
 <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <br><br>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br><br>
+<h2 class="h5">Nombre del deseo</h2>
+<div class="title-image">
+
+  <%= f.text_field :title, placeholder: "Nombre del deseo*", class:"title" %>
+
+
+  <%= f.file_field :image, class:"btn-floating" do %>
+  <i class="material-icons">add</i>
+  <% end %>
+
+</div>
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br><br>
@@ -37,6 +43,6 @@
 
   <%= f.submit class:"waves-effect waves-light btn btn-success" %>
 
-  <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-light btn" %>
+  <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-teal btn-flat" %>
 <% end %>
 </div>

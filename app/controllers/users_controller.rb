@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   #
   #   if @user.save
   #     flash[:notice] = "New user added successfully"
-  #     binding.pry
   #     WelcomeMailer.welcome_email(@user).deliver.now
   #     redirect_to "/users/#{@user.id}"
   #   else

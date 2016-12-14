@@ -108,7 +108,10 @@ nav .brand-logo {
   button a {
     color: white;
   }
-
+  .waves-effect  {
+    min-width: 350px;
+    width: 60%;
+  }
 }
 .user-wish-img {
   height: 340px;
@@ -146,7 +149,7 @@ nav .brand-logo {
   }
 .user-wish-description {
   margin: 0 auto;
-  width: 70%;
+  width: 60%;
   min-width: 350px;
   text-align: justify;
   white-space: normal;
@@ -156,14 +159,41 @@ nav .brand-logo {
 }
 .user-wish-price {
   margin: 0 auto;
-  width: 70%;
+  width: 60%;
   min-width: 350px;
   text-align: left;
   white-space: normal;
   color: rgba(0, 0, 0, 0.54);
   }
 
+  button > .red {
+    color: white;
+    min-width: 350px;
+    width: 60%;
+  }
 
+  .title-image {
+    margin: 0 auto;
+    background-color: white;
+    height: 140px;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 350px;
+    width: 60%;
+    border-bottom: 1px solid #000;
+
+  }
+
+  .button_with_save_icon {
+    background: url(../images/icons/page_save.png) no-repeat 10px 6px;
+
+  }
+
+  .edit-wish {
+    min-width: 350px;
+    width: 60%;
+
+  }
 
 .flex-vertical-center {
   display: flex;
@@ -201,4 +231,9 @@ nav .brand-logo {
 
 .content {
   padding:$sm-measure;
+
+  &.edit{
+    background: #e0e0e0;
+
+  }
 }
