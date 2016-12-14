@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :send_email
+  # after_create :send_email
 
 
 
@@ -38,6 +38,6 @@ class User < ApplicationRecord
  private
    def send_email
 
-     WelcomeMailer.welcome_email(current_user).deliver
+     WelcomeMailer.welcome_email(self).deliver
    end
 end
