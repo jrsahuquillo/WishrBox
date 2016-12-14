@@ -38,6 +38,6 @@ class User < ApplicationRecord
  private
    def send_email
 
-     WelcomeMailer.welcome_email(self).deliver
+     WelcomeMailer.welcome_email(current_user).deliver
    end
 end
