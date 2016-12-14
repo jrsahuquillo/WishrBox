@@ -3,7 +3,7 @@
 <%= render 'form' %>   <!-- Partial _form.html.erb -->
 
 <% if @user == current_user %>
-<button class="waves-effect waves-teal btn-flat"><%= link_to('Eliminar', user_wish_path(@user, @wish),
-      method: :delete, data: { confirm: 'Are you sure to delete?' }) %></button>
+<button class="waves-effect waves-teal btn-flat delete"><%= link_to('Eliminar', user_wish_path(@user, @wish),
+      method: :delete, data: { confirm: '¿Seguro que quieres eliminar' }) %></button>
       <% end %>
 </div>

@@ -56,15 +56,15 @@
 </div>
 <div class="check-box-field">
 
-    <div class="filled-in" id="filled-in-box" checked="checked">
+    <div class="filled-in fav" id="filled-in-box" checked="checked">
       <% unless @user != current_user %>
-      <p>Favorito</p>
+      <h3>&#11088</h3>
       <%= f.check_box :favorite, class:"wish-check" %>
       <% end %>
     </div>
 
-    <div class="filled-in" id="filled-in-box" checked="checked">
-      <p>Público</p>
+    <div class="filled-in public" id="filled-in-box" checked="checked">
+      <h3>&#127873</h3>
 
       <%= f.check_box :public, class:"wish-check" %>
     </div>
@@ -80,7 +80,7 @@
 
 
   <div class="btn-edit-section">
-    <%= f.submit class:"waves-effect waves-light btn btn-success" %>
+    <%= f.submit "Actualizar", class:"waves-effect waves-light btn btn-success" %>
     <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-teal btn-flat"%>
     <% end %>
   <div>

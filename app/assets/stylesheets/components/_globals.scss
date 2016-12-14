@@ -180,10 +180,20 @@ nav .brand-logo {
     border-radius: 50%;
     background-color: #e0e0e0;
     margin: 0 auto;
+    cursor: pointer;
     i {
       margin-left: 6px;
+      cursor: pointer;
+      cursor: hand;
     }
+    #user_avatar{
+      margin: -80px;
+      opacity: 0;
+
+    }
+
   }
+
 
 #textarea1{
   margin: 0 auto;
@@ -202,7 +212,7 @@ nav .brand-logo {
 .check-box-field {
   margin: 0 auto;
   display:flex;
-  justify-content: center;
+  justify-content: space-around;
   min-width: 331px;
   width: 60%;
 
@@ -211,6 +221,9 @@ nav .brand-logo {
   }
 }
 
+.public, .fav {
+  text-align: center;
+}
 
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
    position: static;
@@ -227,15 +240,26 @@ nav .brand-logo {
    justify-content: space-between;
    min-width: 340px;
    width: 60%;
+    }
 
- }
+    .btn-friend-section {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      min-width: 340px;
+      width: 60%;
+       }
+
+
 
   .edit-wish {
     min-width: 350px;
     width: 60%;
   }
 
-
+.validate.search {
+  border-bottom: solid 0.5px rgba(0, 0, 0, 0.2);
+}
 
 .file-path .validate {
   border-bottom: 0px;
@@ -275,11 +299,36 @@ nav .brand-logo {
   right: 16px;
   }
 
+  .delete a{
+    color: red;
+  }
+
+
 .content {
   padding:$sm-measure;
 
   &.edit{
     background: #e0e0e0;
-
   }
+   &.profile{
+     margin: 0 auto;
+     display:flex;
+     justify-content: space-around;
+     min-width: 331px;
+     width: 60%;
+
+    .user-profile {
+      margin: 16px;
+    }
+
+   }
+
+    .edit-user{
+      margin: 0 auto;
+      // display:flex;
+      // justify-content: space-around;
+      min-width: 331px;
+      width: 60%;
+  }
+
 }

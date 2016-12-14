@@ -46,7 +46,7 @@
 
   <section class="row">
     <div class="tab s10 m12 tabs">
-            <% followed.wishes.where(favorite: true).each do |wish| %>
+            <% followed.wishes.where(public: true).each do |wish| %>
             <article class="col wish-card">
               <%= link_to user_wish_path(followed, wish) do%>
               <div class="wish-img">

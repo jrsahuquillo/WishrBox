@@ -41,21 +41,29 @@
     </a>
   <% end %>
 
+<div class="btn-friend-section">
+<div class="user-friend">
   <% unless @user != current_user %>
-    <%= link_to "Ver tu perfil  >> ", profile_path(current_user) %>
+    <%= link_to "Ver tu perfil", profile_path(current_user), class:"waves-effect waves-light btn" %>
     <% else %>
-    <%= link_to "Ver perfil de #{@user.name}  >> ", user_path(@user) %>
-  <% end %><br><br>
-
-  <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
+    <%= link_to "Ver perfil #{@user.name}", user_path(@user), class:"waves-effect waves-light btn" %>
+  <% end %>
+</div>
 
 
   <% unless @user == current_user %>
   <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
+
     <% unless @followed == nil %>
-      <%= link_to "Dejar de seguir a #{@user.name}>> ", user_nofollow_path(current_user, @user), method: :post %>
+    <div class="user-unfollow">
+      <%= link_to "Dejar de seguir #{@user.name}", user_nofollow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn red" %>
+    </div>
     <% else %>
-      <%= link_to "Seguir a #{@user.name}>> ", user_follow_path(current_user, @user), method: :post %> <br><br>
+    <div class="user-follow">
+      <%= link_to "Seguir a #{@user.name}", user_follow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn green" %>
+    </div>
     <% end %>
   <% end %>
+
+</div>
 </div>

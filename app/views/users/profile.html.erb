@@ -1,27 +1,29 @@
-<h2>Hello <%= current_user.name %>!</h2>
-<hr>
-<%= link_to "<< Atrás", request.referer.present? ? request.referer : default_path %><br>
-<%= image_tag current_user.avatar.url(:thumb) %>
-<p>
-<strong>Email:</strong> <%= current_user.email %>
-</p>
+<div class="content profile">
+
 <ul>
-  <li>Nombre:
-    <% if current_user.name.present? %>
+  <div class="user-profile">
+  <%= image_tag current_user.avatar.url(:medium), class: "avatar-lg" %>
+  </div>
+  
+  <li><b>Nombre:</b>
       <%= current_user.name %>
-    <% end %>
   </li>
-  <li>Cumpleaños:
+<br>
+  <li><b>Cumpleaños:</b>
     <% if current_user.birthday.present? %>
       <%= current_user.birthday.strftime("%d-%m-%Y") %>
     <% end %>
   </li>
-  <li>Preferencias:
+  <br>
+  <li><b>Preferencias:</b>
     <% if current_user.preferences.present? %>
       <%= current_user.preferences %>
     <% end %>
   </li>
-  <br><br>
-  <%= link_to 'Editar perfil>> ', edit_user_path(current_user) %><br>
-  <%= link_to 'Mi WishrBox >> ', user_wishes_path(@user) %>
+<br><br>
+  <% unless @user != current_user %>
+  <%= link_to 'Editar perfil', edit_user_path(current_user), class:"waves-effect waves-light btn" %><br>
+  <% end %>
 </ul>
+</div>
+</div>
