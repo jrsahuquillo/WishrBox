@@ -32,18 +32,18 @@ class UsersController < ApplicationController
     render "new"
   end
 
-  # POST /users
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   if @user.save
-  #     flash[:notice] = "New user added successfully"
-  #     WelcomeMailer.welcome_email(@user).deliver.now
-  #     redirect_to "/users/#{@user.id}"
-  #   else
-  #     render "/users/new"
-  #   end
-  # end
+  POST /users
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      flash[:notice] = "New user added successfully"
+      WelcomeMailer.welcome_email(@user).deliver.now
+      redirect_to "/users/#{@user.id}"
+    else
+      render "/users/new"
+    end
+  end
 
   # GET /users/:id/edit
   def edit
