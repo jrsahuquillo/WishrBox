@@ -7,42 +7,82 @@
   </ul>
 <% end %>
 
+<div class="row">
 
-<%= form_for [@user, @wish], html: {multipart:true} do |f| %>
-<h2 class="h5">Nombre del deseo</h2>
-<div class="title-image">
+  <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
+<h2 class="h4 wish-label"><%= f.label :nombre %></h2>
+  <div class="title-image">
 
-  <%= f.text_field :title, placeholder: "Nombre del deseo*", class:"title" %>
+  <div class="input-field col 6">
 
+    <%= f.text_field :title, placeholder: "Nombre del deseo*", class:"title" %>
+  </div>
+    <div class="file-field input-field">
 
-  <%= f.file_field :image, class:"btn-floating" do %>
-  <i class="material-icons">add</i>
-  <% end %>
+        <div class="button_with_save_icon valign-wrapper">
+          <span class="valign"><i class="material-icons">add_a_photo</i></span>
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <div class="preview-image">
+        <% if @wish.image %>
+        <%= image_tag @wish.image.url(:thumb), class: "valign center-align"%>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="wish-description">
+
+            <div class="input-field">
+              <h2 class="h4"><%= f.label :descripción %></h2>
+              <%= f.text_area :description, placeholder: "Descripción",
+                id:"textarea1", class:"materialize-textarea", length:300 %>
+            </div>
+      </div>
+
+<div class="wish-description">
+  <div class="input-field">
+    <h2 class="h4 wish-label"><%= f.label :link %></h2>
+    <%= f.text_field :link,id:"textarea1", class:"materialize-textarea" %>
+  </div>
+  <div class="input-field">
+    <h2 class="h4 wish-label"><%= f.label :precio %></h2>
+    <%= f.text_field :price,id:"textarea1", class:"materialize-textarea" %>
+  </div>
+</div>
+<div class="check-box-field">
+
+    <div class="filled-in" id="filled-in-box" checked="checked">
+      <% unless @user != current_user %>
+      <p>Favorito</p>
+      <%= f.check_box :favorite, class:"wish-check" %>
+      <% end %>
+    </div>
+
+    <div class="filled-in" id="filled-in-box" checked="checked">
+      <p>Público</p>
+
+      <%= f.check_box :public, class:"wish-check" %>
+    </div>
+
+    <div class="filled-in" id="filled-in-box" checked="checked">
+      <% unless @user == current_user %>
+      <p>Reservar</p>
+      <%= f.check_box :locked, class:"wish-check" %>
+      <% end %>
+    </div>
 
 </div>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br><br>
-  <%= f.label :link %>
-  <%= f.text_field :link %>
-  <br><br>
-  <%= f.label :price %>
-  <%= f.text_field :price %> €
-  <br><br>
-  <%= f.label :public %>
-  <%= f.check_box :public %>
-  <br><br>
-  <%= f.label :locked %>
-  <%= f.check_box :locked %>
-  <br><br>
-  <div class="filled-in" id="filled-in-box" checked="checked">
-  <%= f.label :favorite %>
-  <%= f.check_box :favorite %>
-  </div>
-  <br><br>
 
-  <%= f.submit class:"waves-effect waves-light btn btn-success" %>
 
-  <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-teal btn-flat" %>
-<% end %>
+  <div class="btn-edit-section">
+    <%= f.submit class:"waves-effect waves-light btn btn-success" %>
+    <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-teal btn-flat"%>
+    <% end %>
+  <div>
+
 </div>

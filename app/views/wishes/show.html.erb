@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <div class="user-wish-locked">
-        <% if @user == current_user %>
+        <% if @user != current_user %>
           <% if @wish.locked? %>
             <h3>&#128274</h3>
           <% else %>
@@ -38,7 +38,23 @@
     <% end %>
   </div>
 
+<%= form_for [@user, @wish], html: {multipart:true} do |f| %>
+  <div class="filled-in" id="filled-in-box" checked="checked">
+    <% unless @user != current_user %>
+    <p>Favorito</p>
+    <%= f.check_box :favorite, class:"wish-check" %>
+    <% end %>
+  </div>
 
+  
+
+  <div class="filled-in" id="filled-in-box" checked="checked">
+    <% unless @user == current_user %>
+    <p>Reservar</p>
+    <%= f.check_box :locked, class:"wish-check" %>
+    <% end %>
+  </div>
+<% end %>
 
 
 <% if @user == current_user %>

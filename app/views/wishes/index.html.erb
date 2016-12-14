@@ -40,7 +40,6 @@
       <% end %>
     </a>
   <% end %>
-  <%= link_to 'Mi WishrBox >> ', user_wishes_path(current_user) %><br><br>
 
   <% unless @user != current_user %>
     <%= link_to "Ver tu perfil  >> ", profile_path(current_user) %>
@@ -50,7 +49,6 @@
 
   <%= link_to "Buscar amigo>> ", search_following_path %><br><br>
 
-  <%= link_to 'Inicio >> ', root_path(@user) %><br><br>
 
   <% unless @user == current_user %>
   <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>

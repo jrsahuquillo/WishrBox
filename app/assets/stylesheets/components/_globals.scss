@@ -65,43 +65,7 @@ nav .brand-logo {
   }
 }
 
-// .wish-grid {
-//   margin-top: 20px;
-//   display: grid;
-//   align-content: flex-end;
-//   position: relative;
-//   height: 300px;
-// }
-//
-// .wish-card-user {
-//   margin: 0px;
-//   width:165px;
-//   display:inline;
-//   float: left;
-//   border-radius: 2.5px;
-//   &:hover{
-//     opacity:$opacity-hover;
-//   }
-//
-//   .wish-img-user {
-//     height: 200px;
-//     width: 165px;
-//     overflow: hidden;
-//     display: flex;
-//     justify-content: center;
-//     align-items: flex-end;
-//     a img  {
-//       border-radius: 2.5px;
-//       height: auto;
-//       width: 165px;
-//
-//     }
-//   }
-//
-//   a {
-//     color: rgba(0, 0, 0, 0.87);
-//   }
-// }
+
 .wish-detail {
   padding-top:16px;
 
@@ -172,28 +136,110 @@ nav .brand-logo {
     width: 60%;
   }
 
-  .title-image {
-    margin: 0 auto;
-    background-color: white;
-    height: 140px;
-    display: flex;
-    justify-content: flex-end;
-    min-width: 350px;
-    width: 60%;
-    border-bottom: 1px solid #000;
+.title-image {
+  margin: 0 auto;
+  background-color: white;
+  height: 82px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 340px;
+  width: 60%;
+  padding: 6px;
 
+  .input-field {
+    .title{
+    border-right: solid 0.5px rgba(0, 0, 0, 0.2);
+    width: 120%;
+    }
   }
+}
+
+.row p{
+   padding-left: 5%;
+}
+
+.preview-image {
+  margin: 0 auto;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+  label{
+    font-size: 14px;
+    margin-left:20px;
+    padding: 3px 0 0 0;
+    position: relative;
+}
 
   .button_with_save_icon {
-    background: url(../images/icons/page_save.png) no-repeat 10px 6px;
-
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    margin: 0 auto;
+    i {
+      margin-left: 6px;
+    }
   }
+
+#textarea1{
+  margin: 0 auto;
+  background-color: white;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 331px;
+  width: 60%;
+  border-bottom: solid 0.5px rgba(0, 0, 0, 0.2);
+  border-bottom-width: 60%;
+  padding: 40px 6px 0px 6px;
+
+}
+
+.check-box-field {
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+  min-width: 331px;
+  width: 60%;
+
+  p {
+    text-align: center;
+  }
+}
+
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+   position: static;
+   left: 0px;
+   opacity: 1;
+   margin: 0 auto;
+   display: inline-block;
+   min-width: 340px;
+   width: 60%;
+ }
+ .btn-edit-section {
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+   min-width: 340px;
+   width: 60%;
+
+ }
 
   .edit-wish {
     min-width: 350px;
     width: 60%;
-
   }
+
+
+
+.file-path .validate {
+  border-bottom: 0px;
+}
 
 .flex-vertical-center {
   display: flex;
@@ -210,7 +256,7 @@ nav .brand-logo {
     padding: 8px;
 
     .h5 {
-      padding: 8px;
+      padding: 6px;
     }
 
   }
