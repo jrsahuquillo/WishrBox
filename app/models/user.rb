@@ -1,11 +1,7 @@
 class User < ApplicationRecord
   after_create :send_email
 
-  private
-    def send_email
 
-      WelcomeMailer.welcome_email(self).deliver
-    end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -38,4 +34,10 @@ class User < ApplicationRecord
   #    find(:all)
   #  end
  end
+
+ private
+   def send_email
+
+     WelcomeMailer.welcome_email(self).deliver
+   end
 end
