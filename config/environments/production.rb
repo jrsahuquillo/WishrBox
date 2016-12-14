@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true #false
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
@@ -56,6 +56,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "wishrbox_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings   = {
+    	address:  "smtp.gmail.com",
+    	port: 587,
+    	user_name: ENV['gmail_username'],
+    	password: ENV['gmail_password'],
+    	authentication: "plain",
+    	enable_starttls_auto: true
+    }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
