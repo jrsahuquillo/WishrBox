@@ -1,72 +1,61 @@
-<div class="create-edit-wish">
-<% if @wish.errors.any? %>
+<!-- <% if @wish.errors.any? %>
   <ul>
     <% @wish.errors.full_messages.each do |error_msg| %>
-      <li><%= error_msg %></li>
+    <li><%= error_msg %></li>
     <% end %>
   </ul>
-<% end %>
+  <% end %> -->
+  <br>
+<div class="row margin-none">
 
-<div class="row">
-
+  <!-- form start -->
   <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
-<h2 class="h4 wish-label"><%= f.label :nombre %></h2>
-  <div class="title-image">
-
-  <div class="input-field col 6">
-
-    <%= f.text_field :title, placeholder: "Nombre del deseo*", class:"title" %>
-  </div>
-    <div class="file-field input-field">
-
-        <div class="button_with_save_icon valign-wrapper">
-          <span class="valign"><i class="material-icons">add_a_photo</i></span>
-          <%= f.file_field :image %>
+  <div class="input-panel row margin-none">
+    <div class="row">
+    <div class="input-field col s8">
+      <%= f.text_field :title, placeholder: "Nombre del deseo*" %>
+      <%= f.label :title, "title", class: "margin-left-none" %>
+    </div>
+    <div class="input-field file-field col s3 relative" id="add-image">
+      <div class="button_with_save_icon add-image-button" >
+        <i class="material-icons">add_a_photo</i>
+        <div class="row">
+            <input class="file-path" type="text" disabled>
         </div>
-
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
+        <%= f.file_field :image %>
       </div>
-      <div class="preview-image">
-        <% if @wish.image %>
-        <%= image_tag @wish.image.url(:thumb), class: "valign center-align"%>
-        <% end %>
-      </div>
+      <% if @wish.image %>
+      <%= image_tag @wish.image.url(:thumb) %>
+      <% end %>
+    </div>
     </div>
 
-      <div class="wish-description">
-
-            <div class="input-field">
-              <h2 class="h4"><%= f.label :descripción %></h2>
-              <%= f.text_area :description, placeholder: "Descripción",
-                id:"textarea1", class:"materialize-textarea", length:300 %>
-            </div>
-      </div>
-
-<div class="wish-description">
-  <div class="input-field">
-    <h2 class="h4 wish-label"><%= f.label :link %></h2>
-    <%= f.text_field :link,id:"textarea1", class:"materialize-textarea" %>
   </div>
-  <div class="input-field">
-    <h2 class="h4 wish-label"><%= f.label :precio %></h2>
-    <%= f.text_field :price,id:"textarea1", class:"materialize-textarea" %>
-  </div>
-</div>
-<div class="check-box-field">
 
+  <div class="input-field input-panel row">
+    <%= f.text_area :description, placeholder: "Descripción", class:"materialize-textarea", length:300 %>
+    <%= f.label :description %>
+  </div>
+
+  <div class="input-field input-panel row">
+    <%= f.text_field :link%>
+    <%= f.label :link %>
+  </div>
+  <div class="input-field input-panel row">
+    <%= f.text_field :price %>
+    <%= f.label :price %>
+  </div>
+  <div class="input-panel row">
     <div class="filled-in fav" id="filled-in-box" checked="checked">
       <% unless @user != current_user %>
-      <h3>&#11088</h3>
       <%= f.check_box :favorite, class:"wish-check" %>
+      <%= f.label :favorite, raw("&#11088") %>
       <% end %>
     </div>
 
     <div class="filled-in public" id="filled-in-box" checked="checked">
-      <h3>&#127873</h3>
-
       <%= f.check_box :public, class:"wish-check" %>
+      <%= f.label :public, raw("&#127873") %>
     </div>
 
     <div class="filled-in" id="filled-in-box" checked="checked">
@@ -75,14 +64,9 @@
       <%= f.check_box :locked, class:"wish-check" %>
       <% end %>
     </div>
-
-</div>
-
-
-  <div class="btn-edit-section">
-    <%= f.submit "Actualizar", class:"waves-effect waves-light btn btn-success" %>
-    <%= link_to 'Cancel', user_wishes_path(@user), class:"waves-effect waves-teal btn-flat"%>
-    <% end %>
-  <div>
-
+  </div>
+  <div class="row">
+    <%= f.submit "Actualizar", class:"btn-large btn-expanded" %>
+  </div>
+<% end %>
 </div>

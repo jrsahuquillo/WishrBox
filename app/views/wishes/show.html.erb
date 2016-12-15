@@ -58,7 +58,9 @@
 
 
 <% if @user == current_user %>
-  <button class="waves-effect waves-light btn edit"><%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit" %></button>
+<div class="col s12 m10 l8 offset-m1 offset-l2">
+  <%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit", class:"btn-large btn-expanded edit" %>
+  </div>
       <% end %><br><br>
     </div>
   </div>

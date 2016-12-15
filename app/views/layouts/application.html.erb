@@ -11,6 +11,22 @@
   </head>
 
   <body>
+
+<!-- Alerts and validations -->
+<% if alert %>
+<div class="card-panel" id="alert">
+  <p class="white-text"><%= alert %></p>
+</div>
+
+<script>
+
+  setInterval(function(){
+  $("#alert").fadeOut()
+}, 5000);
+</script>
+
+<% end %>
+
     <% if user_signed_in? %>
     <nav>
       <div class="nav-wrapper">
@@ -22,7 +38,7 @@
             <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
             <li><a href="#">Deseos Bloqueados</a></li>
             <li><%= link_to "Mi perfil", profile_path(current_user) %></li>
-            <li><a href="/search_following.">Buscar a tus amigos</a></li>
+            <li><a href="/search_following">Buscar a tus amigos</a></li>
             <li>
                 <% if user_signed_in? %>
                   <%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
@@ -56,6 +72,7 @@
               <i class="material-icons">photo_filter</i>
               Mi Wishrbox
               <% end %>
+
             </li>
             <li><a href="#"><i class="material-icons">lock</i>Deseos Bloqueados</a></li>
             <li><%= link_to profile_path(current_user) do%>
@@ -63,7 +80,7 @@
               Mi perfil
               <% end %>
             </li>
-            <li><a href="/search_following.html"><i class="material-icons">search</i>Buscar a tus amigos</a></li>
+            <li><a href="/search_following"><i class="material-icons">search</i>Buscar a tus amigos</a></li>
             <li><a href="#"><i class="material-icons">send</i>Invita a tus amigos</a></li>
             <li><% if user_signed_in? %>
               <%= link_to destroy_user_session_path, method: 'DELETE' do %>
@@ -82,11 +99,6 @@
         <% end %>
       </div>
     </nav>
-    <% end %>
-
-
-    <% if alert %>
-    <p class="alert"><%= alert %></p>
     <% end %>
 
     <%= yield %>
