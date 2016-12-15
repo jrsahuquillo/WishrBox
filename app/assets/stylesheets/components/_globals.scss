@@ -168,6 +168,14 @@ button > .red {
     padding-left: 5%;
 }
 
+.row .wish-title{
+  display:flex;
+   img {
+    padding: 0 10px;;
+  }
+
+}
+
 .preview-image {
     margin: 0 auto;
 
@@ -290,7 +298,6 @@ button > .red {
     .see-all,
     .show-profile {
         height: $header-height;
-
         a {
             color: rgba(0,0,0,0.54);
         }
@@ -346,8 +353,10 @@ button > .red {
 
 #edit-view {
     .input-panel {
+        display: flex;
+        justify-content: space-around;
         background: white;
-        padding: 2rem;
+        padding: 1.5rem;
         min-width: 340px;
         margin: 0px 16px;
     }
@@ -412,4 +421,14 @@ button > .red {
 
 .relative {
     position: relative;
+}
+
+.fav img, .public img, .locked img {
+  height: 30px;
+  width: 30px;
+}
+
+img.fav-mini{
+  height: 15px;
+  width: 15px;
 }

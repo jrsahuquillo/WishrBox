@@ -46,12 +46,12 @@ class WishesController < ApplicationController
     end
 
     def update
-      @user = current_user
+      @user = User.find(params[:user_id])
       # @user = User.find_by(id: params[:user_id])
       @wish = @user.wishes.find_by(id: params[:id])
 
       if @wish.update(wish_params)
-        redirect_to "/users/#{@user.id}/wishes"
+        redirect_to user_wishes_path(@user)
       else
         render "edit"
       end

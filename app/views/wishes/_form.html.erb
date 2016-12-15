@@ -11,7 +11,7 @@
   <!-- form start -->
   <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
   <div class="input-panel row margin-none">
-    <div class="row">
+    <div class="row wish-title">
       <div class="input-field col s8">
         <%= f.text_field :title, placeholder: "Nombre del deseo*" %>
         <%= f.label :title, "title", class: "margin-left-none" %>
@@ -49,19 +49,21 @@
     <div class="filled-in fav" id="filled-in-box" checked="checked">
       <% unless @user != current_user %>
       <%= f.check_box :favorite, class:"wish-check" %>
-      <%= f.label :favorite, raw("&#11088") %>
+      <!-- <%= f.label :favorite, raw("&#11088") %> -->
+      <%= f.label :favorite , image_tag("http://emojipedia-us.s3.amazonaws.com/cache/12/3d/123d40d4b642994adc6cbdd2c4ed1b73.png") %>
       <% end %>
     </div>
 
     <div class="filled-in public" id="filled-in-box" checked="checked">
       <%= f.check_box :public, class:"wish-check" %>
-      <%= f.label :public, raw("&#127873") %>
+      <!-- <%= f.label :public, raw("&#127873") %> -->
+      <%= f.label :public , image_tag("http://emojipedia-us.s3.amazonaws.com/cache/3e/a7/3ea7e8a6e273da1515819a1e94b4dbcb.png") %>
     </div>
 
-    <div class="filled-in" id="filled-in-box" checked="checked">
+    <div class="filled-in locked" id="filled-in-box" checked="checked">
       <% unless @user == current_user %>
-      <p>Reservar</p>
       <%= f.check_box :locked, class:"wish-check" %>
+      <%= f.label :public , image_tag("http://emojipedia-us.s3.amazonaws.com/cache/08/a9/08a98c8c9a1040ae760bc1031a4bf9e9.png") %>
       <% end %>
     </div>
   </div>

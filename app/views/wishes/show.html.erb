@@ -4,15 +4,15 @@
       <%= image_tag @wish.image.url(:medium), class: "valign center-align"%>
       <div class="user-wish-favorite">
         <% if @wish.favorite? %>
-        <h3>&#11088</h3>
+        <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/12/3d/123d40d4b642994adc6cbdd2c4ed1b73.png"/>
         <% end %>
       </div>
       <div class="user-wish-locked">
         <% if @user != current_user %>
         <% if @wish.locked? %>
-        <h3>&#128274</h3>
+        <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/08/a9/08a98c8c9a1040ae760bc1031a4bf9e9.png"/>
       <% else %>
-        <h3>&#128275</h3>
+        <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/30/0a/300ab8f972b71e33e42e27c67dc7e7a8.png"/>
         <% end %>
         <% end %>
       </div>
@@ -42,22 +42,14 @@
         €</h3>
       <% end %>
     </div>
-
-    <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
-    <div class="filled-in" id="filled-in-box" checked="checked">
-      <% unless @user != current_user %>
-      <h4>&#11088</h4>
-      <%= f.check_box :favorite, class:"wish-check" %>
+>
+    <% if @user != current_user %>
+      <div class="row">
+        <%= f.submit "Actualizar", class:"btn-large btn-expanded" %>
+      </div>
       <% end %>
-    </div>
-
-    <div class="filled-in" id="filled-in-box" checked="checked">
-      <% unless @user == current_user %>
-      <p>Reservar</p>
-      <%= f.check_box :locked, class:"wish-check" %>
-      <% end %>
-    </div>
     <% end %>
+
 
     <% if @user == current_user %>
     <div class="col s12 m10 l8 offset-m1 offset-l2">

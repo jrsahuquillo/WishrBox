@@ -21,12 +21,19 @@
         </div>
         <h3 class="h5"><%= wish.title %></h3>
         <% if wish.favorite? %>
-        &#11088
+        <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/12/3d/123d40d4b642994adc6cbdd2c4ed1b73.png"/>
         <% end %>
-        <% if wish.locked? %>
-        &#128274
-      <% else %>
-        &#128275
+        <% unless @user == current_user %>
+          <% if wish.locked? %>
+          <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/08/a9/08a98c8c9a1040ae760bc1031a4bf9e9.png"/>
+          <% else %>
+          <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/30/0a/300ab8f972b71e33e42e27c67dc7e7a8.png"/>
+          <% end %>
+        <% end %>
+        <% unless @user != current_user %>
+          <% if wish.public? %>
+          <img class="fav-mini" src="http://emojipedia-us.s3.amazonaws.com/cache/3e/a7/3ea7e8a6e273da1515819a1e94b4dbcb.png"/>
+          <% end %>
         <% end %>
       </li>
     </article>
