@@ -15,20 +15,16 @@ class WishesController < ApplicationController
         @user = current_user
         @wishes = @user.wishes.order('favorite desc')
       end
-      # @user = current_user
-      # @wishes = @user.wishes.order('favorite desc')
 
     end
 
     def new
       @user = current_user
-      # @user = User.find(params[:user_id])
       @wish = @user.wishes.new
     end
 
     def create
       @user = current_user
-      # @user = User.find(params[:user_id])
       @wish = @user.wishes.new(wish_params)
 
         if @wish.save
@@ -41,13 +37,11 @@ class WishesController < ApplicationController
 
     def edit
       @user = current_user
-      # @user = User.find params[:user_id]
       @wish = @user.wishes.find params[:id]
     end
 
     def update
       @user = User.find(params[:user_id])
-      # @user = User.find_by(id: params[:user_id])
       @wish = @user.wishes.find_by(id: params[:id])
 
       if @wish.update(wish_params)
@@ -59,13 +53,11 @@ class WishesController < ApplicationController
 
     def destroy
       @user = current_user
-      # @user = User.find_by(id: params[:user_id])
       @wish = @user.wishes.find_by(id: params[:id]).destroy
       redirect_to action: :index, user_id: @user.id
     end
 
     def show
-      # @user = User.find_by(id: params[:user_id])
       @wish = Wish.find_by(id: params[:id])
 
       unless @wish
@@ -76,9 +68,6 @@ class WishesController < ApplicationController
         return render text: 'Not public', status: '404'
       end
 
-      # if !@wish
-      #   render text: 'Not Found', status: '404'
-      # end
       @user = @wish.user
 
   end

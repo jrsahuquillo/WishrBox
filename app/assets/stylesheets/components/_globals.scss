@@ -120,11 +120,13 @@ input[type="checkbox"]:not(:checked) {
 }
 
 .user-wish-description {
+    height: auto;
+    width: 340px;
     margin: 0 auto;
-    width: 60%;
-    min-width: 350px;
-    text-align: justify;
-    white-space: normal;
+    position: relative;
+    // min-width: 350px;
+    // text-align: justify;
+    // white-space: normal;
 
     h3 {
         line-height: 140%;
@@ -133,8 +135,10 @@ input[type="checkbox"]:not(:checked) {
 
 .user-wish-price {
     margin: 0 auto;
-    width: 60%;
+    height: 50px;
+    width: 340px;
     min-width: 350px;
+    position: relative;
     text-align: left;
     white-space: normal;
     color: rgba(0, 0, 0, 0.54);
@@ -423,8 +427,6 @@ button > .red {
 .relative {
     position: relative;
 }
-
-
 
 .fav img, .public img, .locked img {
   height: 30px;

@@ -7,7 +7,12 @@
       </h2>
     </div>
     <div class="flex-vertical-center">
-      <h2 class="h4 flex-vertical-center"><%= @user.wishes.where(public: true).length %>
+      <h2 class="h4 flex-vertical-center">
+        <% if @user == current_user %>
+        <%= @user.wishes.length %>
+        <% else %>
+        <%= @user.wishes.where(public: true).length %>
+        <% end %>
         deseos</h2>
     </div>
   </div>

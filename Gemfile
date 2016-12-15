@@ -48,7 +48,7 @@ group :development do
   gem 'rb-readline'
   gem 'pry-rails'
   gem 'rails_12factor', group: :production
-
+  gem 'rspec-rails', '~> 3.5'
 
 end
 
