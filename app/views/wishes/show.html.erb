@@ -42,13 +42,30 @@
         €</h3>
       <% end %>
     </div>
->
+
+    <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
+
+    <div class="filled-in fav" id="filled-in-box" checked="checked">
+      <% unless @user == current_user %>
+      <%= f.check_box :locked, class:"wish-check" %>
+      <%= f.label :locked , image_tag("http://emojipedia-us.s3.amazonaws.com/cache/08/a9/08a98c8c9a1040ae760bc1031a4bf9e9.png") %>
+
+      <% end %>
+    </div>
+
     <% if @user != current_user %>
+    <% if @wish.locked? %>
       <div class="row">
-        <%= f.submit "Actualizar", class:"btn-large btn-expanded" %>
+        <%= f.submit "Desbloquear deseo", class:"btn-large btn-expanded" %>
+      </div>
+      <% else %>
+      <div class="row">
+        <%= f.submit "Bloquear deseo", class:"btn-large btn-expanded" %>
       </div>
       <% end %>
-    <% end %>
+      <% end %>
+
+    <!-- <% end %> -->
 
 
     <% if @user == current_user %>
@@ -56,6 +73,7 @@
       <%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit", class:"btn-large btn-expanded edit" %>
     </div>
     <% end %><br><br>
+
   </div>
 </div>
 </div>
