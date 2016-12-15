@@ -2,7 +2,7 @@
   <div class="logo">
     <img src="/images/logo/logo.png">
   </div>
-  <div class ="fields">
+  <div class="fields">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="col s12">
       <div class="field input-field field-white">
@@ -15,18 +15,18 @@
         <%= f.label :password, 'Contraseña' %>
       </div>
 
-    <% if devise_mapping.rememberable? -%>
+      <% if devise_mapping.rememberable? -%>
       <div class="center-align">
         <%= f.check_box :remember_me, class: "check-white"%>
         <%= f.label :remember_me, 'Recordar contraseña', class: "white-text" %>
       </div>
       <br/>
-    <% end %>
+      <% end %>
 
-    <input type="submit" class="btn-large btn-expanded white" name="commit" value="Log in" data-disable-with="Log in">
-  <% end %>
+      <input type="submit" class="btn-large btn-expanded white" name="commit" value="Log in" data-disable-with="Log in">
+      <% end %>
 
-  <%= render "devise/shared/links" %>
-</div>
-</div>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
 </div>
