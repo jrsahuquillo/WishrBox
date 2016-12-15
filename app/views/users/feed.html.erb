@@ -1,67 +1,71 @@
 <!-- User favorite wishes -->
 
 <div class="content">
-  <div class = "home-self-feed-head">
-    <div class = "flex-vertical-center self-avatar">
-      <h2 class="h5 no-margin"><b>Deseos guardados</b></h2>
+  <div class="home-self-feed-head">
+    <div class="flex-vertical-center self-avatar">
+      <h2 class="h5 no-margin">
+        <b>Deseos guardados</b>
+      </h2>
     </div>
     <div class="flex-vertical-center see-all">
       <%= link_to user_wishes_path(current_user), class: "flex-vertical-center" do %>
-        Ver todos
-        <i class="material-icons">keyboard_arrow_right</i>
+      Ver todos
+      <i class="material-icons">keyboard_arrow_right</i>
       <% end %>
     </div>
   </div>
 
   <!-- User row -->
   <section class="row wish-row">
-          <% current_user.wishes.each do |wish| %>
-            <article class="col wish-card">
-              <%= link_to user_wish_path(current_user, wish) do%>
-              <div class="wish-img">
-                  <%= image_tag wish.image.url(:medium)%>
-              </div>
-                <h3 class="h5"><%= wish.title %></h3>
-                <% end %>
-            </article>
-          <% end %>
+    <% current_user.wishes.each do |wish| %>
+    <article class="col wish-card">
+      <%= link_to user_wish_path(current_user, wish) do%>
+      <div class="wish-img">
+        <%= image_tag wish.image.url(:medium)%>
+      </div>
+      <h3 class="h5"><%= wish.title %></h3>
+      <% end %>
+    </article>
+    <% end %>
   </section>
 
-<!-- Friends favorite wishes -->
+  <!-- Friends favorite wishes -->
 
   <% @followed_user.each do |followed| %>
   <div>
-  <div class="home-friends-feed-head">
-    <div class="flex-vertical-center friends-avatar">
-      <%= link_to image_tag(followed.avatar.url(:thumb), class: "circle"), user_wishes_path(followed) %>
-    <h2 class="h5 no-margin"><b><%= followed.name %></b></h2>
+    <div class="home-friends-feed-head">
+      <div class="flex-vertical-center friends-avatar">
+        <%= link_to image_tag(followed.avatar.url(:thumb), class: "circle"), user_wishes_path(followed) %>
+        <h2 class="h5 no-margin">
+          <b><%= followed.name %></b>
+        </h2>
+      </div>
+      <div class="flex-vertical-center show-profile">
+        <%= link_to user_path(followed), class:"flex-vertical-center" do %>
+        Ver perfil
+        <i class="material-icons">keyboard_arrow_right</i>
+        <% end %>
+      </div>
     </div>
-    <div class="flex-vertical-center show-profile">
-    <%= link_to user_path(followed), class:"flex-vertical-center" do %>
-      Ver perfil
-      <i class="material-icons">keyboard_arrow_right</i>
-      <% end %>
-    </div>
-  </div>
 
-  <section class="row">
-    <div class="tab s10 m12 tabs">
-            <% followed.wishes.where(public: true).each do |wish| %>
-            <article class="col wish-card">
-              <%= link_to user_wish_path(followed, wish) do%>
-              <div class="wish-img">
-                  <%= image_tag wish.image.url(:medium)%>
-                </div>
-                  <h3 class="h5"><%= wish.title %></h3>
-                  <% end %>
-            </article>
+    <section class="row">
+      <div class="tab s10 m12 tabs">
+        <% followed.wishes.where(public: true).each do |wish| %>
+        <article class="col wish-card">
+          <%= link_to user_wish_path(followed, wish) do%>
+          <div class="wish-img">
+            <%= image_tag wish.image.url(:medium)%>
+          </div>
+          <h3 class="h5"><%= wish.title %></h3>
           <% end %>
-        </div>
-  </section>
-</div>
-<% end %>
+        </article>
+        <% end %>
+      </div>
+    </section>
+  </div>
+  <% end %>
 
-<%= link_to new_user_wish_path(current_user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
-<i class="material-icons">add</i>
-<% end %>
+  <%= link_to new_user_wish_path(current_user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
+  <i class="material-icons">add</i>
+  <% end %>
 </div>

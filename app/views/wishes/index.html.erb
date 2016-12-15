@@ -1,68 +1,68 @@
-
 <div class="content">
   <%= link_to image_tag(@user.avatar.url(:thumb), class: "avatar-lg"), profile_path(current_user) %>
-  <div class = "home-self-feed-head">
-    <div class = "flex-vertical-center">
-      <h2 class="h5"><b><%= @user.name %></b></h2>
+  <div class="home-self-feed-head">
+    <div class="flex-vertical-center">
+      <h2 class="h5">
+        <b><%= @user.name %></b>
+      </h2>
     </div>
     <div class="flex-vertical-center">
-      <h2 class="h4 flex-vertical-center"><%= @user.wishes.length %> deseos</h2>
+      <h2 class="h4 flex-vertical-center"><%= @user.wishes.length %>
+        deseos</h2>
     </div>
   </div>
 
   <section class="wrapper">
-  <div class="masonry">
-    <% @wishes.each do |wish| %>
+    <div class="masonry">
+      <% @wishes.each do |wish| %>
       <article class="item">
         <div class="wish-img-user">
-        <%= link_to image_tag(wish.image.url(:medium)), user_wish_path(@user, wish) %>
-      </div>
+          <%= link_to image_tag(wish.image.url(:medium)), user_wish_path(@user, wish) %>
+        </div>
         <h3 class="h5"><%= wish.title %></h3>
         <% if wish.favorite? %>
-          &#11088
+        &#11088
         <% end %>
         <% if wish.locked? %>
-          &#128274
-        <% else %>
-            &#128275
+        &#128274
+      <% else %>
+        &#128275
         <% end %>
       </li>
     </article>
-      <% end %>
+    <% end %>
   </div>
-  </section>
+</section>
 
-
-  <% unless @user != current_user %>
-    <a>
-      <%= link_to new_user_wish_path(@user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
-      <i class="material-icons">add</i>
-      <% end %>
-    </a>
+<% unless @user != current_user %>
+<a>
+  <%= link_to new_user_wish_path(@user, @wish), class:"btn-floating btn-large waves-effect waves-light orange" do%>
+  <i class="material-icons">add</i>
   <% end %>
+</a>
+<% end %>
 
 <div class="btn-friend-section">
-<div class="user-friend">
-  <% unless @user != current_user %>
+  <div class="user-friend">
+    <% unless @user != current_user %>
     <%= link_to "Ver tu perfil", profile_path(current_user), class:"waves-effect waves-light btn" %>
-    <% else %>
+  <% else %>
     <%= link_to "Ver perfil #{@user.name}", user_path(@user), class:"waves-effect waves-light btn" %>
-  <% end %>
-</div>
-
+    <% end %>
+  </div>
 
   <% unless @user == current_user %>
   <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
 
-    <% unless @followed == nil %>
-    <div class="user-unfollow">
-      <%= link_to "Dejar de seguir #{@user.name}", user_nofollow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn red" %>
-    </div>
-    <% else %>
-    <div class="user-follow">
-      <%= link_to "Seguir a #{@user.name}", user_follow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn green" %>
-    </div>
-    <% end %>
+  <% unless @followed == nil %>
+  <div class="user-unfollow">
+    <%= link_to "Dejar de seguir #{@user.name}", user_nofollow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn red" %>
+  </div>
+<% else %>
+  <div class="user-follow">
+    <%= link_to "Seguir a #{@user.name}", user_follow_path(current_user, @user), method: :post, class:"waves-effect waves-light btn green" %>
+  </div>
+  <% end %>
   <% end %>
 
 </div>

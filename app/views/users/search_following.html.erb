@@ -1,13 +1,13 @@
 <div class="content">
-<h1 class="h3">Descubre los deseos de tus amigos</h1>
-<br>
-<div class="row">
-<%= form_tag users_path, class:"col s12", method: 'get' do%>
-<div class="row input-field col s12">
-<p>Introduce el email del amigo que buscas</p>
-<%= text_field_tag :search, params[:search], class:"validate search" %>
-<%= submit_tag "Buscar", name: nil, class:"waves-effect waves-light btn"  %>
-</div>
-<% end %>
-</div>
+  <h1 class="h3">Descubre los deseos de tus amigos</h1>
+  <br>
+  <div class="row">
+    <%= form_tag users_path, class:"col s12", method: 'get' do%>
+    <div class="row input-field col s12">
+      <p>Introduce el email del amigo que buscas</p>
+      <%= text_field_tag :search, params[:search], class:"validate search" %>
+      <%= submit_tag "Buscar", name: nil, class:"waves-effect waves-light btn"  %>
+    </div>
+    <% end %>
+  </div>
 </div>

@@ -1,29 +1,32 @@
 <div class="content profile">
 
-<ul>
-  <div class="user-profile">
-  <%= image_tag current_user.avatar.url(:medium), class: "avatar-lg" %>
-  </div>
-  
-  <li><b>Nombre:</b>
+  <ul>
+    <div class="user-profile">
+      <%= image_tag current_user.avatar.url(:medium), class: "avatar-lg" %>
+    </div>
+
+    <li>
+      <b>Nombre:</b>
       <%= current_user.name %>
-  </li>
-<br>
-  <li><b>Cumpleaños:</b>
-    <% if current_user.birthday.present? %>
+    </li>
+    <br>
+    <li>
+      <b>Cumpleaños:</b>
+      <% if current_user.birthday.present? %>
       <%= current_user.birthday.strftime("%d-%m-%Y") %>
-    <% end %>
-  </li>
-  <br>
-  <li><b>Preferencias:</b>
-    <% if current_user.preferences.present? %>
+      <% end %>
+    </li>
+    <br>
+    <li>
+      <b>Preferencias:</b>
+      <% if current_user.preferences.present? %>
       <%= current_user.preferences %>
+      <% end %>
+    </li>
+    <br><br>
+    <% unless @user != current_user %>
+    <%= link_to 'Editar perfil', edit_user_path(current_user), class:"waves-effect waves-light btn" %><br>
     <% end %>
-  </li>
-<br><br>
-  <% unless @user != current_user %>
-  <%= link_to 'Editar perfil', edit_user_path(current_user), class:"waves-effect waves-light btn" %><br>
-  <% end %>
-</ul>
+  </ul>
 </div>
 </div>

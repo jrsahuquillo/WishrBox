@@ -1,41 +1,40 @@
 <div class="content">
   <div class="edit-user">
-  <%= image_tag current_user.avatar.url(:medium), class: "avatar-lg" %>
+    <%= image_tag current_user.avatar.url(:medium), class: "avatar-lg" %>
   </div>
-
 
   <div class="edit-user">
-  <div class="row">
+    <div class="row">
 
-    <%= form_for @user, html: {multipart: true} do |f| %>
-    <div class="input-field col s12">
-      <!-- <%= f.label :avatar %>
-      <%= f.file_field :avatar, id:"textarea1", class:"materialize-textarea" %> -->
+      <%= form_for @user, html: {multipart: true} do |f| %>
+      <div class="input-field col s12">
 
-      <div class="button_with_save_icon valign-wrapper">
-        <span class="valign"><i class="material-icons">add_a_photo</i></span>
-        <%= f.file_field :avatar, class:"edit-user" %>
+        <div class="button_with_save_icon valign-wrapper">
+          <span class="valign">
+            <i class="material-icons">add_a_photo</i>
+          </span>
+          <%= f.file_field :avatar, class:"edit-user" %>
+        </div>
+
+      </div>
+      <div class="input-field col s12">
+        <%= f.label :name %>
+        <%= f.text_field :name, id:"textarea1", class:"materialize-textarea" %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday, id:"textarea1", class:"materialize-textarea" %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.label :preferences %>
+        <%= f.text_area :preferences, id:"textarea1", class:"materialize-textarea" %>
       </div>
 
+      <div class="btn-edit-section user-update">
+        <%= f.button "Actualizar", class:"waves-effect waves-light btn btn-success" %>
+        <%= link_to 'Cancelar', profile_path(@user), class:"waves-effect waves-teal btn-flat" %>
+      </div>
+      <% end %>
     </div>
-    <div class="input-field col s12">
-      <%= f.label :name %>
-      <%= f.text_field :name, id:"textarea1", class:"materialize-textarea" %>
-    </div>
-    <div class="input-field col s12">
-      <%= f.label :birthday %>
-      <%= f.date_field :birthday, id:"textarea1", class:"materialize-textarea" %>
-    </div>
-    <div class="input-field col s12">
-      <%= f.label :preferences %>
-      <%= f.text_area :preferences, id:"textarea1", class:"materialize-textarea" %>
-    </div>
-
-    <div class="btn-edit-section user-update">
-      <%= f.button "Actualizar", class:"waves-effect waves-light btn btn-success" %>
-      <%= link_to 'Cancelar', profile_path(@user), class:"waves-effect waves-teal btn-flat" %>
-    </div>
-    <% end %>
   </div>
-</div>
 </div>

@@ -12,95 +12,111 @@
 
   <body>
 
-<!-- Alerts and validations -->
-<% if alert %>
-<div class="card-panel" id="alert">
-  <p class="white-text"><%= alert %></p>
-</div>
+    <!-- Alerts and validations -->
+    <% if alert %>
+    <div class="card-panel" id="alert">
+      <p class="white-text"><%= alert %></p>
+    </div>
 
-<script>
+    <script>
 
-  setInterval(function(){
-  $("#alert").fadeOut()
-}, 5000);
-</script>
+      setInterval(function () {
+        $("#alert").fadeOut()
+      }, 5000);
+    </script>
 
-<% end %>
+    <% end %>
 
     <% if user_signed_in? %>
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">WishrBox</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
         <% if user_signed_in? %>
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'Inicio', root_path(@user) %></li>
-            <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
-            <li><a href="#">Deseos Bloqueados</a></li>
-            <li><%= link_to "Mi perfil", profile_path(current_user) %></li>
-            <li><a href="/search_following">Buscar a tus amigos</a></li>
-            <li>
-                <% if user_signed_in? %>
-                  <%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
-                <% else %>
-                  <p>
-                    <%= link_to 'Sign_up', new_user_registration_path %> |
-                    <%= link_to 'Sign_in', new_user_session_path %>
-                  </p>
-                <% end %>
-            </li>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to 'Inicio', root_path(@user) %></li>
+          <li><%= link_to 'Mi WishrBox', user_wishes_path(current_user) %></li>
+          <li>
+            <a href="#">Deseos Bloqueados</a>
+          </li>
+          <li><%= link_to "Mi perfil", profile_path(current_user) %></li>
+          <li>
+            <a href="/search_following">Buscar a tus amigos</a>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+            <%= link_to 'Log out', destroy_user_session_path, method: 'DELETE' %></p>
+        <% else %>
+          <p>
+            <%= link_to 'Sign_up', new_user_registration_path %>
+            |
+            <%= link_to 'Sign_in', new_user_session_path %>
+          </p>
+          <% end %>
+        </li>
 
-          </ul>
-        <% end %>
+      </ul>
+      <% end %>
 
+      <% if user_signed_in? %>
+      <ul class="side-nav" id="mobile-demo">
+        <div class="side-nav-head">
+          <%= image_tag current_user.avatar.url(:thumb), class: "avatar-med" %>
+          <h5>
+            <b><%= current_user.name %></b><br></h5>
+          <h5 class="font-small"><%= current_user.email %></h5>
+        </div>
 
+        <li><%= link_to root_path(@user) do %>
+          <i class="material-icons">home</i>
+          Inicio
+          <% end %>
+        </li>
+        <li><%= link_to user_wishes_path(current_user) do%>
+          <i class="material-icons">photo_filter</i>
+          Mi Wishrbox
+          <% end %>
 
-        <% if user_signed_in? %>
-          <ul class="side-nav" id="mobile-demo">
-            <div class="side-nav-head">
-                <%= image_tag current_user.avatar.url(:thumb), class: "avatar-med" %>
-                <h5><b><%= current_user.name %></b><br></h5>
-                <h5 class="font-small"><%= current_user.email %></h5>
-            </div>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">lock</i>Deseos Bloqueados</a>
+        </li>
+        <li><%= link_to profile_path(current_user) do%>
+          <i class="material-icons">face</i>
+          Mi perfil
+          <% end %>
+        </li>
+        <li>
+          <a href="/search_following">
+            <i class="material-icons">search</i>Buscar a tus amigos</a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">send</i>Invita a tus amigos</a>
+        </li>
+        <li><% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: 'DELETE' do %>
+          <i class="material-icons">power_settings_new</i>
+          Log out
+          <% end %>
+        <% else %>
 
-            <li><%= link_to root_path(@user) do %>
-              <i class="material-icons">home</i>
-              Inicio
-              <% end %>
-            </li>
-            <li><%= link_to user_wishes_path(current_user) do%>
-              <i class="material-icons">photo_filter</i>
-              Mi Wishrbox
-              <% end %>
+          <%= link_to 'Sign_up', new_user_registration_path %>
+          |
+          <%= link_to 'Sign_in', new_user_session_path %>
 
-            </li>
-            <li><a href="#"><i class="material-icons">lock</i>Deseos Bloqueados</a></li>
-            <li><%= link_to profile_path(current_user) do%>
-              <i class="material-icons">face</i>
-              Mi perfil
-              <% end %>
-            </li>
-            <li><a href="/search_following"><i class="material-icons">search</i>Buscar a tus amigos</a></li>
-            <li><a href="#"><i class="material-icons">send</i>Invita a tus amigos</a></li>
-            <li><% if user_signed_in? %>
-              <%= link_to destroy_user_session_path, method: 'DELETE' do %>
-                <i class="material-icons">power_settings_new</i>
-                Log out
-              <% end %>
-            <% else %>
+          <% end %>
+        </li>
+      </ul>
 
-                <%= link_to 'Sign_up', new_user_registration_path %> |
-                <%= link_to 'Sign_in', new_user_session_path %>
+      <% end %>
+    </div>
+  </nav>
+  <% end %>
 
-            <% end %>
-            </li>
-          </ul>
-
-        <% end %>
-      </div>
-    </nav>
-    <% end %>
-
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>

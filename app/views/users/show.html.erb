@@ -1,28 +1,31 @@
 <div class="content profile">
 
-<ul>
-  <div class="user-profile">
-  <%= image_tag @user.avatar.url(:medium), class: "avatar-lg" %>
-  </div>
+  <ul>
+    <div class="user-profile">
+      <%= image_tag @user.avatar.url(:medium), class: "avatar-lg" %>
+    </div>
 
-  <li><b>Nombre:</b>
-    <% if @user.name.present? %>
+    <li>
+      <b>Nombre:</b>
+      <% if @user.name.present? %>
       <%= @user.name %>
-    <% end %>
-  </li>
-  <li><b>Cumpleaños:</b>
-    <% if @user.birthday.present? %>
+      <% end %>
+    </li>
+    <li>
+      <b>Cumpleaños:</b>
+      <% if @user.birthday.present? %>
       <%= @user.birthday.strftime("%d-%m-%Y") %>
-    <% end %>
-  </li>
-  <li><b>Preferencias:</b>
-    <% if @user.preferences.present? %>
+      <% end %>
+    </li>
+    <li>
+      <b>Preferencias:</b>
+      <% if @user.preferences.present? %>
       <%= @user.preferences %>
-    <% end %>
-  </li>
-  <br><br>
-  <%= link_to "WishrBox de #{@user.name} ", user_wishes_path(@user), class:"waves-effect waves-light btn" %>
+      <% end %>
+    </li>
+    <br><br>
+    <%= link_to "WishrBox de #{@user.name} ", user_wishes_path(@user), class:"waves-effect waves-light btn" %>
 
-</ul>
+  </ul>
 
 </div>

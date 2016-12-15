@@ -4,64 +4,66 @@
       <%= image_tag @wish.image.url(:medium), class: "valign center-align"%>
       <div class="user-wish-favorite">
         <% if @wish.favorite? %>
-          <h3>&#11088</h3>
+        <h3>&#11088</h3>
         <% end %>
       </div>
       <div class="user-wish-locked">
         <% if @user != current_user %>
-          <% if @wish.locked? %>
-            <h3>&#128274</h3>
-          <% else %>
-            <h3>&#128275</h3>
-          <% end %>
+        <% if @wish.locked? %>
+        <h3>&#128274</h3>
+      <% else %>
+        <h3>&#128275</h3>
+        <% end %>
         <% end %>
       </div>
     </div>
 
     <% if @wish.title.present? %>
-      <h2 class="h4"><b><%= @wish.title %></h2></b>
+    <h2 class="h4">
+      <b><%= @wish.title %></h2>
+    </b>
     <% end %>
-  <div class="user-wish-link">
-    <% if @wish.link.present? %>
-    <a href="<%= @wish.link %>" target="blank"><i class="material-icons md-36">link</i></a><br>
-    <% end %>
-  </div>
-  <div class="user-wish-description">
-    <% if @wish.description.present? %>
-      <h3 class="h5"><%= @wish.description %></h3>
-    <% end %>
-  </div>
-
-  <div class="user-wish-price">
-    <% if @wish.price.present? %>
-      <h3 class="h5"><%= @wish.price %> €</h3>
-    <% end %>
-  </div>
-
-<%= form_for [@user, @wish], html: {multipart:true} do |f| %>
-  <div class="filled-in" id="filled-in-box" checked="checked">
-    <% unless @user != current_user %>
-    <h4>&#11088</h4>
-    <%= f.check_box :favorite, class:"wish-check" %>
-    <% end %>
-  </div>
-
-
-
-  <div class="filled-in" id="filled-in-box" checked="checked">
-    <% unless @user == current_user %>
-    <p>Reservar</p>
-    <%= f.check_box :locked, class:"wish-check" %>
-    <% end %>
-  </div>
-<% end %>
-
-
-<% if @user == current_user %>
-<div class="col s12 m10 l8 offset-m1 offset-l2">
-  <%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit", class:"btn-large btn-expanded edit" %>
-  </div>
-      <% end %><br><br>
+    <div class="user-wish-link">
+      <% if @wish.link.present? %>
+      <a href="<%= @wish.link %>" target="blank">
+        <i class="material-icons md-36">link</i>
+      </a><br>
+      <% end %>
     </div>
+    <div class="user-wish-description">
+      <% if @wish.description.present? %>
+      <h3 class="h5"><%= @wish.description %></h3>
+      <% end %>
+    </div>
+
+    <div class="user-wish-price">
+      <% if @wish.price.present? %>
+      <h3 class="h5"><%= @wish.price %>
+        €</h3>
+      <% end %>
+    </div>
+
+    <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
+    <div class="filled-in" id="filled-in-box" checked="checked">
+      <% unless @user != current_user %>
+      <h4>&#11088</h4>
+      <%= f.check_box :favorite, class:"wish-check" %>
+      <% end %>
+    </div>
+
+    <div class="filled-in" id="filled-in-box" checked="checked">
+      <% unless @user == current_user %>
+      <p>Reservar</p>
+      <%= f.check_box :locked, class:"wish-check" %>
+      <% end %>
+    </div>
+    <% end %>
+
+    <% if @user == current_user %>
+    <div class="col s12 m10 l8 offset-m1 offset-l2">
+      <%= link_to 'Editar', "/users/#{@user.id}/wishes/#{@wish.id}/edit", class:"btn-large btn-expanded edit" %>
+    </div>
+    <% end %><br><br>
   </div>
+</div>
 </div>

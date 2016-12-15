@@ -5,29 +5,29 @@
     <% end %>
   </ul>
   <% end %> -->
-  <br>
+<br>
 <div class="row margin-none">
 
   <!-- form start -->
   <%= form_for [@user, @wish], html: {multipart:true} do |f| %>
   <div class="input-panel row margin-none">
     <div class="row">
-    <div class="input-field col s8">
-      <%= f.text_field :title, placeholder: "Nombre del deseo*" %>
-      <%= f.label :title, "title", class: "margin-left-none" %>
-    </div>
-    <div class="input-field file-field col s3 relative" id="add-image">
-      <div class="button_with_save_icon add-image-button" >
-        <i class="material-icons">add_a_photo</i>
-        <div class="row">
-            <input class="file-path" type="text" disabled>
-        </div>
-        <%= f.file_field :image %>
+      <div class="input-field col s8">
+        <%= f.text_field :title, placeholder: "Nombre del deseo*" %>
+        <%= f.label :title, "title", class: "margin-left-none" %>
       </div>
-      <% if @wish.image %>
-      <%= image_tag @wish.image.url(:thumb) %>
-      <% end %>
-    </div>
+      <div class="input-field file-field col s3 relative" id="add-image">
+        <div class="button_with_save_icon add-image-button">
+          <i class="material-icons">add_a_photo</i>
+          <div class="row">
+            <input class="file-path" type="text" disabled>
+          </div>
+          <%= f.file_field :image %>
+        </div>
+        <% if @wish.image %>
+        <%= image_tag @wish.image.url(:thumb) %>
+        <% end %>
+      </div>
     </div>
 
   </div>
@@ -68,5 +68,5 @@
   <div class="row">
     <%= f.submit "Actualizar", class:"btn-large btn-expanded" %>
   </div>
-<% end %>
+  <% end %>
 </div>

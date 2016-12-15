@@ -1,6 +1,5 @@
 <div class="content profile">
 
-
   <ul>
     <h3>Amigo encontrado</h3><br>
     <% @user %>
@@ -9,8 +8,8 @@
         <%= image_tag @user.avatar.url(:thumb), class: "avatar-lg" %>
       </div>
       <%= "Usuario: " + @user.name  %></br>
-      <%= "e-mail: " + @user.email %><br><br>
-        <%= link_to "WishrBox de #{@user.name}", user_wishes_path(@user) %>
-    </li>
-  </ul>
+    <%= "e-mail: " + @user.email %><br><br>
+    <%= link_to "WishrBox de #{@user.name}", user_wishes_path(@user) %>
+  </li>
+</ul>
 </div>

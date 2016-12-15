@@ -341,12 +341,15 @@ button > .red {
 
 .background-white {
     background: white;
+
 }
 
 #edit-view {
     .input-panel {
         background: white;
         padding: 2rem;
+        min-width: 340px;
+        margin: 0px 16px;
     }
 
     label {
