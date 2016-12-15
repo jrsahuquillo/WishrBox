@@ -353,12 +353,13 @@ button > .red {
 
 #edit-view {
     .input-panel {
-        display: flex;
-        justify-content: space-around;
+        // display: flex;
+        // justify-content: space-around;
         background: white;
         padding: 1.5rem;
         min-width: 340px;
         margin: 0px 16px;
+
     }
 
     label {
@@ -423,11 +424,12 @@ button > .red {
     position: relative;
 }
 
+
+
 .fav img, .public img, .locked img {
   height: 30px;
   width: 30px;
 }
-
 img.fav-mini{
   height: 15px;
   width: 15px;
