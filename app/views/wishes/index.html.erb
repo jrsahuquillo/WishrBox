@@ -1,5 +1,5 @@
 <div class="content">
-  <%= link_to image_tag(@user.avatar.url(:thumb), class: "avatar-lg"), profile_path(current_user) %>
+  <%= link_to image_tag(@user.avatar.url(:thumb), class: "avatar-lg"), user_path(@user) %>
   <div class="home-self-feed-head">
     <div class="flex-vertical-center">
       <h2 class="h5">
@@ -49,14 +49,14 @@
 </a>
 <% end %>
 
-<div class="btn-friend-section">
+<!-- <div class="btn-friend-section">
   <div class="user-friend">
     <% unless @user != current_user %>
     <%= link_to "Ver tu perfil", profile_path(current_user), class:"waves-effect waves-light btn" %>
   <% else %>
     <%= link_to "Ver perfil #{@user.name}", user_path(@user), class:"waves-effect waves-light btn" %>
     <% end %>
-  </div>
+  </div> -->
 
   <% unless @user == current_user %>
   <% @followed = Following.find_by(user_id: current_user.id, follow_id: @user.id) %>
