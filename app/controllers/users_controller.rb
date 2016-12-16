@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     unless @user
       render "no_users_found"
     end
-    # @users = User.order(birthday: :asc).limit(15)
   end
 
   # GET /users/:id
@@ -16,14 +15,11 @@ class UsersController < ApplicationController
       render "no_users_found"
     end
   end
+
   # GET /feed/
   def feed
     @followed = Following.where(user_id: current_user)
     @followed_user= User.where(id: @followed.pluck(:follow_id))
-
-    # unless @user
-    #   render "no_users_found"
-    # end
   end
 
   # GET /users/new
@@ -48,14 +44,11 @@ class UsersController < ApplicationController
   # GET /users/:id/edit
   def edit
     @user = current_user
-    # @user = User.find params[:id]
   end
 
   # PATCH/PUT /users/:id
   def update
-    # @user = User.find_by(id: params[:id])
     @user = current_user
-
     if @user.update(user_params)
       redirect_to action: :profile, id: @user.id
     else
@@ -103,9 +96,7 @@ class UsersController < ApplicationController
 
 
   private
-
     def user_params
       params.require(:user).permit(:name, :email, :preferences, :birthday, :avatar)
     end
-
-end
+  end

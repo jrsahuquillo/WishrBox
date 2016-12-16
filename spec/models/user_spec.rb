@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  
+
 
   describe 'associations' do
     it 'has_many' do
